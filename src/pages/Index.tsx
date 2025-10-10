@@ -1,12 +1,316 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Link } from "react-router-dom";
+import { Calendar, MapPin, Users, Award, Building2, Handshake } from "lucide-react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import heroBg from "@/assets/hero-bg.jpg";
+import manufacturing from "@/assets/manufacturing.jpg";
+import venue from "@/assets/venue.jpg";
+import partnership from "@/assets/partnership.jpg";
 
 const Index = () => {
+  const speakers = [
+    { name: "Dr. Amina Mohammed", title: "Minister of Industry, Trade and Investment", country: "Nigeria" },
+    { name: "Mehmet Muş", title: "Minister of Trade", country: "Türkiye" },
+    { name: "Prof. Yemi Osinbajo", title: "Former Vice President", country: "Nigeria" },
+    { name: "Dr. Fatih Dönmez", title: "Minister of Energy", country: "Türkiye" },
+    { name: "Aliko Dangote", title: "President, Dangote Group", country: "Nigeria" },
+    { name: "Mustafa Koç", title: "Chairman, Koç Holding", country: "Türkiye" },
+  ];
+
+  const features = [
+    {
+      icon: Users,
+      title: "World-Class Speakers",
+      description: "Industry leaders and policymakers from Nigeria and Türkiye"
+    },
+    {
+      icon: Handshake,
+      title: "Strategic Networking",
+      description: "Connect with key decision-makers and potential partners"
+    },
+    {
+      icon: Building2,
+      title: "Investment Opportunities",
+      description: "Explore manufacturing and industrial investment projects"
+    },
+    {
+      icon: Award,
+      title: "Expert Insights",
+      description: "Gain valuable knowledge on reducing import dependency"
+    }
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Navigation />
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden animated-bg">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${heroBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'brightness(0.4)',
+          }}
+        />
+        <div className="absolute inset-0 hero-gradient opacity-80 z-10" />
+        
+        <div className="container mx-auto px-4 z-20 text-center text-white pt-20">
+          <div className="animate-fade-in-up">
+            <div className="inline-block mb-6 px-6 py-2 bg-secondary/20 backdrop-blur-sm rounded-full border border-secondary/30">
+              <span className="text-secondary font-semibold">21st - 24th October, 2025</span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              Nigeria-Türkiye<br />
+              <span className="text-secondary">Business & Investment</span><br />
+              <span className="text-primary-glow">Summit 2025</span>
+            </h1>
+
+            <p className="text-xl md:text-2xl mb-4 max-w-4xl mx-auto text-gray-200 font-light">
+              "The Role of Manufacturing in Reducing Import Dependency in Nigeria:<br />
+              A Strategic Approach to Industrial Growth and Economic Stability"
+            </p>
+
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 my-8 text-lg">
+              <div className="flex items-center gap-2">
+                <Calendar className="text-secondary" size={24} />
+                <span>21st - 24th October, 2025</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="text-secondary" size={24} />
+                <span>Hilton Hotel, Kozyatağı Istanbul, Türkiye</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+              <Link to="/register">
+                <Button className="btn-secondary text-lg px-12 py-6">
+                  REGISTER NOW
+                </Button>
+              </Link>
+              <Link to="/about">
+                <Button className="btn-primary text-lg px-12 py-6">
+                  LEARN MORE
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Overview Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-16 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Summit <span className="text-secondary">Overview</span>
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              The Nigeria-Türkiye Business & Investment Summit 2025 brings together industry leaders, 
+              policymakers, and investors to explore strategic opportunities in manufacturing and industrial 
+              development. This landmark event focuses on reducing Nigeria's import dependency through 
+              Turkish expertise and investment partnerships, fostering sustainable economic growth and 
+              creating a framework for long-term bilateral cooperation.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <Card
+                key={index}
+                className="p-6 hover:shadow-lg transition-all duration-300 hover:scale-105 animate-fade-in-up border-2 hover:border-secondary"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <feature.icon className="w-12 h-12 text-secondary mb-4" />
+                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Manufacturing Focus Section */}
+      <section className="py-20 bg-muted">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="animate-fade-in-up">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Transforming Nigeria's <span className="text-secondary">Manufacturing Sector</span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                This summit addresses the critical challenge of import dependency through strategic 
+                manufacturing partnerships. Learn from Türkiye's successful industrialization model and 
+                discover concrete opportunities for technology transfer, joint ventures, and capacity building.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  "Industrial policy frameworks and implementation strategies",
+                  "Technology transfer and manufacturing excellence",
+                  "Infrastructure development for industrial zones",
+                  "Access to Turkish manufacturing expertise and investment"
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0" />
+                    <span className="text-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link to="/about" className="inline-block mt-8">
+                <Button className="btn-primary">Explore Topics</Button>
+              </Link>
+            </div>
+            <div className="animate-fade-in-up">
+              <img
+                src={manufacturing}
+                alt="Manufacturing facility"
+                className="rounded-lg shadow-2xl hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Speakers Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Featured <span className="text-secondary">Speakers</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Learn from distinguished leaders shaping the future of Nigeria-Türkiye economic cooperation
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {speakers.map((speaker, index) => (
+              <Card
+                key={index}
+                className="p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in-up border-2 hover:border-primary"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-full mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">{speaker.name}</h3>
+                <p className="text-sm text-muted-foreground mb-1">{speaker.title}</p>
+                <p className="text-sm text-secondary font-semibold">{speaker.country}</p>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link to="/speakers">
+              <Button className="btn-secondary">View All Speakers</Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Partnership Section */}
+      <section className="py-20 bg-primary-dark text-white">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="animate-fade-in-up order-2 md:order-1">
+              <img
+                src={partnership}
+                alt="Business partnership"
+                className="rounded-lg shadow-2xl hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div className="animate-fade-in-up order-1 md:order-2">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Strategic <span className="text-secondary">Partnerships</span>
+              </h2>
+              <p className="text-lg mb-6 leading-relaxed text-gray-200">
+                The summit provides unparalleled opportunities for Nigerian and Turkish businesses to forge 
+                strategic partnerships. Engage in B2B matchmaking sessions, explore joint venture opportunities, 
+                and access exclusive networking events with key decision-makers from both nations.
+              </p>
+              <Link to="/partnerships">
+                <Button className="btn-secondary">Partnership Opportunities</Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Venue Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Premium <span className="text-secondary">Venue</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Experience world-class facilities at the prestigious Hilton Hotel, Istanbul
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto animate-fade-in-up">
+            <img
+              src={venue}
+              alt="Hilton Hotel Istanbul"
+              className="rounded-lg shadow-2xl w-full mb-8"
+            />
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-4">Hilton Hotel Kozyatağı</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold text-secondary mb-3">Location</h4>
+                  <p className="text-muted-foreground">
+                    Kozyatağı, Istanbul, Türkiye<br />
+                    Easy access to Istanbul's business district<br />
+                    Close to Sabiha Gökçen International Airport
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-secondary mb-3">Facilities</h4>
+                  <ul className="text-muted-foreground space-y-2">
+                    <li>• State-of-the-art conference rooms</li>
+                    <li>• Luxury accommodation</li>
+                    <li>• Premium dining options</li>
+                    <li>• Business center & networking lounges</li>
+                  </ul>
+                </div>
+              </div>
+              <Link to="/hotels" className="inline-block mt-6">
+                <Button className="btn-primary">View Hotel Details</Button>
+              </Link>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-primary-dark to-hero-overlay text-white">
+        <div className="container mx-auto px-4 text-center animate-fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready to Join the <span className="text-secondary">Summit</span>?
+          </h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-200">
+            Secure your spot at Nigeria-Türkiye's most significant business event of 2025
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/register">
+              <Button className="btn-secondary text-lg px-12 py-6">
+                REGISTER NOW
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button className="btn-primary text-lg px-12 py-6">
+                CONTACT US
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 };
