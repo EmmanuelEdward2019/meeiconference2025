@@ -4,8 +4,12 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import heroBg from "@/assets/hero-bg.jpg";
-import manufacturing from "@/assets/manufacturing.jpg";
+import conference from "@/assets/conference.jpg";
+import businessBreakfast from "@/assets/business-breakfast.jpeg";
+import agriculture from "@/assets/agriculture.jpg";
+import telecommunications from "@/assets/telecommunications.jpg";
+import logistics from "@/assets/logistics.jpg";
+import industrial from "@/assets/industrial.jpg";
 import venue from "@/assets/venue.jpg";
 import partnership from "@/assets/partnership.jpg";
 
@@ -47,17 +51,18 @@ const Index = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden animated-bg">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url(${heroBg})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'brightness(0.4)',
-          }}
-        />
-        <div className="absolute inset-0 hero-gradient opacity-80 z-10" />
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          style={{ filter: 'brightness(0.55)' }}
+        >
+          <source src="/video-1.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 hero-gradient opacity-70 z-10" />
         
         <div className="container mx-auto px-4 z-20 text-center text-white pt-20">
           <div className="animate-fade-in-up">
@@ -167,7 +172,7 @@ const Index = () => {
             </div>
             <div className="animate-fade-in-up">
               <img
-                src={manufacturing}
+                src={industrial}
                 alt="Manufacturing facility"
                 className="rounded-lg shadow-2xl hover:scale-105 transition-transform duration-500"
               />

@@ -1,14 +1,36 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Card } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { Check } from "lucide-react";
 
 const Register = () => {
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    country: "",
+    organization: "",
+    jobTitle: "",
+    industry: "",
+    package: "",
+    dietaryRequirements: "",
+    specialAccommodations: "",
+    interests: [] as string[],
+  });
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
   const packages = [
     {
       name: "Standard Delegate",
@@ -46,6 +68,54 @@ const Register = () => {
       ]
     }
   ];
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const { error } = await supabase.from("registrations").insert([
+        {
+          full_name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          country: formData.country,
+          organization: formData.organization,
+          job_title: formData.jobTitle,
+          industry: formData.industry,
+          delegate_package: formData.package,
+          dietary_requirements: formData.dietaryRequirements,
+          special_accommodations: formData.specialAccommodations,
+          interests: formData.interests,
+        },
+      ]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Registration Submitted!",
+        description: "Thank you for registering. We'll contact you shortly.",
+      });
+      navigate("/");
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to submit registration. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleInterestChange = (interest: string, checked: boolean) => {
+    setFormData(prev => ({
+      ...prev,
+      interests: checked
+        ? [...prev.interests, interest]
+        : prev.interests.filter(i => i !== interest)
+    }));
+  };
 
   return (
     <div className="min-h-screen">
@@ -110,48 +180,89 @@ const Register = () => {
                 Complete Your <span className="text-secondary">Registration</span>
               </h2>
 
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Personal Information */}
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Personal Information</h3>
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
                     <div>
-                      <Label htmlFor="firstName">First Name *</Label>
-                      <Input id="firstName" placeholder="John" className="mt-1" />
+                      <Label htmlFor="fullName">Full Name *</Label>
+                      <Input 
+                        id="fullName" 
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({...formData, fullName: e.target.value})}
+                        placeholder="John Doe" 
+                        className="mt-1" 
+                        required 
+                      />
                     </div>
                     <div>
-                      <Label htmlFor="lastName">Last Name *</Label>
-                      <Input id="lastName" placeholder="Doe" className="mt-1" />
+                      <Label htmlFor="email">Email Address *</Label>
+                      <Input 
+                        id="email" 
+                        type="email" 
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        placeholder="john.doe@example.com" 
+                        className="mt-1" 
+                        required 
+                      />
                     </div>
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <Label htmlFor="email">Email Address *</Label>
-                    <Input id="email" type="email" placeholder="john.doe@example.com" className="mt-1" />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone">Phone Number *</Label>
-                    <Input id="phone" type="tel" placeholder="+234 XXX XXX XXXX" className="mt-1" />
+                    <div>
+                      <Label htmlFor="phone">Phone Number *</Label>
+                      <Input 
+                        id="phone" 
+                        type="tel" 
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        placeholder="+234 XXX XXX XXXX" 
+                        className="mt-1" 
+                        required 
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="country">Country *</Label>
+                      <Input 
+                        id="country" 
+                        value={formData.country}
+                        onChange={(e) => setFormData({...formData, country: e.target.value})}
+                        placeholder="Nigeria" 
+                        className="mt-1" 
+                        required 
+                      />
+                    </div>
                   </div>
                 </div>
 
                 {/* Organization Information */}
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Organization Information</h3>
-                  <div className="space-y-6">
+                  <div className="space-y-4">
                     <div>
                       <Label htmlFor="organization">Organization Name *</Label>
-                      <Input id="organization" placeholder="Company Name" className="mt-1" />
+                      <Input 
+                        id="organization" 
+                        value={formData.organization}
+                        onChange={(e) => setFormData({...formData, organization: e.target.value})}
+                        placeholder="Company Name" 
+                        className="mt-1" 
+                        required 
+                      />
                     </div>
                     <div>
                       <Label htmlFor="jobTitle">Job Title *</Label>
-                      <Input id="jobTitle" placeholder="CEO, Director, Manager, etc." className="mt-1" />
+                      <Input 
+                        id="jobTitle" 
+                        value={formData.jobTitle}
+                        onChange={(e) => setFormData({...formData, jobTitle: e.target.value})}
+                        placeholder="CEO, Director, Manager, etc." 
+                        className="mt-1" 
+                        required 
+                      />
                     </div>
                     <div>
-                      <Label htmlFor="industry">Industry Sector *</Label>
-                      <Select>
+                      <Label htmlFor="industry">Industry Sector</Label>
+                      <Select value={formData.industry} onValueChange={(value) => setFormData({...formData, industry: value})}>
                         <SelectTrigger className="mt-1">
                           <SelectValue placeholder="Select industry" />
                         </SelectTrigger>
@@ -175,58 +286,67 @@ const Register = () => {
                 {/* Registration Package */}
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Select Package *</h3>
-                  <Select>
+                  <Select value={formData.package} onValueChange={(value) => setFormData({...formData, package: value})} required>
                     <SelectTrigger>
                       <SelectValue placeholder="Choose registration package" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="standard">Standard Delegate - $500</SelectItem>
-                      <SelectItem value="premium">Premium Delegate - $850</SelectItem>
-                      <SelectItem value="corporate">Corporate Package - $2,500</SelectItem>
+                      <SelectItem value="Standard Delegate">Standard Delegate - $500</SelectItem>
+                      <SelectItem value="Premium Delegate">Premium Delegate - $850</SelectItem>
+                      <SelectItem value="Corporate Package">Corporate Package - $2,500</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 {/* Additional Options */}
                 <div>
-                  <h3 className="text-xl font-semibold mb-4">Additional Options</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="b2b" />
-                      <Label htmlFor="b2b" className="font-normal cursor-pointer">
-                        Register for B2B Matchmaking Sessions (+$100)
-                      </Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="accommodation" />
-                      <Label htmlFor="accommodation" className="font-normal cursor-pointer">
-                        Request accommodation assistance
-                      </Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="dietary" />
-                      <Label htmlFor="dietary" className="font-normal cursor-pointer">
-                        I have special dietary requirements
-                      </Label>
-                    </div>
+                  <h3 className="text-xl font-semibold mb-4">Areas of Interest</h3>
+                  <div className="space-y-3">
+                    {['Manufacturing', 'Technology Transfer', 'Joint Ventures', 'Investment Opportunities', 'B2B Matchmaking'].map((interest) => (
+                      <div key={interest} className="flex items-center space-x-2">
+                        <Checkbox 
+                          id={interest}
+                          checked={formData.interests.includes(interest)}
+                          onCheckedChange={(checked) => handleInterestChange(interest, checked as boolean)}
+                        />
+                        <Label htmlFor={interest} className="font-normal cursor-pointer">
+                          {interest}
+                        </Label>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Terms */}
-                <div className="flex items-start space-x-2 pt-4">
-                  <Checkbox id="terms" />
-                  <Label htmlFor="terms" className="text-sm font-normal cursor-pointer">
-                    I agree to the terms and conditions and privacy policy. I consent to receive 
-                    information about the summit via email.
-                  </Label>
+                {/* Special Requirements */}
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="dietary">Dietary Requirements</Label>
+                    <Textarea
+                      id="dietary"
+                      value={formData.dietaryRequirements}
+                      onChange={(e) => setFormData({...formData, dietaryRequirements: e.target.value})}
+                      placeholder="Any dietary restrictions or preferences..."
+                      className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="accommodations">Special Accommodations</Label>
+                    <Textarea
+                      id="accommodations"
+                      value={formData.specialAccommodations}
+                      onChange={(e) => setFormData({...formData, specialAccommodations: e.target.value})}
+                      placeholder="Any special accommodations needed..."
+                      className="mt-1"
+                    />
+                  </div>
                 </div>
 
-                <Button className="btn-secondary w-full text-lg py-6">
-                  Complete Registration & Pay
+                <Button type="submit" className="btn-secondary w-full text-lg py-6" disabled={loading}>
+                  {loading ? "Submitting..." : "Complete Registration"}
                 </Button>
 
                 <p className="text-center text-sm text-muted-foreground">
-                  Secure payment processing • All major credit cards accepted
+                  By registering, you agree to our terms and conditions
                 </p>
               </form>
             </Card>

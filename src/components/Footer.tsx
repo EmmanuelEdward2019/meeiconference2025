@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -7,11 +8,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">
-              <span className="text-primary-glow">Nigeria-Türkiye</span>
-              <br />
-              <span className="text-secondary">Summit 2025</span>
-            </h3>
+            <img src={logo} alt="MEEI Conference" className="h-16 mb-4" />
             <p className="text-gray-300 text-sm">
               Driving industrial growth and economic stability through strategic manufacturing partnerships.
             </p>
