@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Star, Phone, Mail, Wifi, Coffee, Car, Utensils } from "lucide-react";
 import venue from "@/assets/venue.jpg";
+import breakfastImg from "@/assets/business-breakfast-5.jpeg";
 
 const Hotels = () => {
   const mainVenue = {
@@ -57,9 +58,17 @@ const Hotels = () => {
       <Navigation />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-primary-dark to-background text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src={breakfastImg} 
+            alt="Hotels" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/90 to-background/95" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in-up text-white">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Accommodation & <span className="text-secondary">Hotels</span>
             </h1>

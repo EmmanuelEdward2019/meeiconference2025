@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import ceremonyImg from "@/assets/ceremony.jpg";
 
 const Guests = () => {
   const guestCategories = [
@@ -48,9 +49,17 @@ const Guests = () => {
       <Navigation />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-primary-dark to-background text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src={ceremonyImg} 
+            alt="Executive Guests" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/90 to-background/95" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in-up text-white">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Executive <span className="text-secondary">Guests</span>
             </h1>

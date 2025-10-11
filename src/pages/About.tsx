@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Target, Users, TrendingUp, Award } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import objectivesImg from "@/assets/objectives.jpg";
 
 const About = () => {
   const objectives = [
@@ -32,9 +33,17 @@ const About = () => {
       <Navigation />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-primary-dark to-background text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src={objectivesImg} 
+            alt="Conference" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/90 to-background/95" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in-up text-white">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               About the <span className="text-secondary">Summit</span>
             </h1>
