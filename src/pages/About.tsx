@@ -63,15 +63,17 @@ const About = () => {
               Our <span className="text-secondary">Mission</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              The Nigeria-Türkiye Business & Investment Summit 2025 is designed to address one of 
-              Nigeria's most pressing economic challenges: import dependency. By leveraging Türkiye's 
-              proven industrialization success and manufacturing expertise, this summit creates a 
-              platform for meaningful dialogue, partnership formation, and actionable solutions.
+              The Nigeria-Türkiye Business & Investment Summit 2025 addresses one of Nigeria's most 
+              pressing economic challenges: import dependency. Under the theme "The Role of Manufacturing 
+              in Reducing Import Dependency in Nigeria: A Strategic Approach to Industrial Growth and 
+              Economic Stability," this landmark event brings together leaders from both nations to forge 
+              concrete partnerships in manufacturing and industrial development.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Our mission is to facilitate knowledge transfer, encourage foreign direct investment, 
-              and establish long-term bilateral cooperation that will transform Nigeria's manufacturing 
-              landscape and contribute to sustainable economic growth.
+              and establish long-term bilateral cooperation by leveraging Türkiye's proven industrialization 
+              success. Through strategic partnerships, technology transfer, and focused industrial policy, 
+              we aim to transform Nigeria's manufacturing landscape and contribute to sustainable economic growth.
             </p>
           </div>
         </div>

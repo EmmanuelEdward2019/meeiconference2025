@@ -15,12 +15,12 @@ import networking from "@/assets/networking.jpeg";
 
 const Index = () => {
   const speakers = [
-    { name: "Dr. Amina Mohammed", title: "Minister of Industry, Trade and Investment", country: "Nigeria" },
-    { name: "Mehmet Muş", title: "Minister of Trade", country: "Türkiye" },
-    { name: "Prof. Yemi Osinbajo", title: "Former Vice President", country: "Nigeria" },
-    { name: "Dr. Fatih Dönmez", title: "Minister of Energy", country: "Türkiye" },
-    { name: "Aliko Dangote", title: "President, Dangote Group", country: "Nigeria" },
-    { name: "Mustafa Koç", title: "Chairman, Koç Holding", country: "Türkiye" },
+    { name: "Dr. Daniel Deji Ayodele", title: "Founder, MEEI Program", country: "Nigeria" },
+    { name: "Shehu Mohammed Bello", title: "Chairman, Revenue Mobilization Allocation & Fiscal Commission", country: "Nigeria" },
+    { name: "Dr. Hasan Sert", title: "AK Party MKYK Member & Chairman, AfroTurk TV", country: "Türkiye" },
+    { name: "Yavuz Altun", title: "CEO, Happy Center (Retail Sector)", country: "Türkiye" },
+    { name: "Yasin Altay", title: "Istanbul Chamber of Commerce (Import/Export)", country: "Türkiye" },
+    { name: "Prof. Dr. Abdulhakim Coşkun", title: "Managing Partner, Detagen Healthcare", country: "Türkiye" },
   ];
 
   const features = [
@@ -67,7 +67,7 @@ const Index = () => {
         <div className="container mx-auto px-4 z-20 text-center text-white pt-20">
           <div className="animate-fade-in-up">
             <div className="inline-block mb-6 px-6 py-2 bg-secondary/20 backdrop-blur-sm rounded-full border border-secondary/30">
-              <span className="text-secondary font-semibold">21st - 24th October, 2025</span>
+              <span className="text-secondary font-semibold">Main Program: 22nd October 2025</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
@@ -84,7 +84,7 @@ const Index = () => {
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 my-8 text-lg">
               <div className="flex items-center gap-2">
                 <Calendar className="text-secondary" size={24} />
-                <span>21st - 24th October, 2025</span>
+                <span>Main Event: 22nd October 2025</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="text-secondary" size={24} />

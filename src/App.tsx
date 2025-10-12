@@ -7,6 +7,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Speakers from "./pages/Speakers";
+import Program from "./pages/Program";
 import Contact from "./pages/Contact";
 import Sponsorship from "./pages/Sponsorship";
 import Partnerships from "./pages/Partnerships";
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/speakers" element={<Speakers />} />
+          <Route path="/program" element={<Program />} />
           <Route path="/sponsorship" element={<Sponsorship />} />
           <Route path="/partnerships" element={<Partnerships />} />
           <Route path="/guests" element={<Guests />} />
