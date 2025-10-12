@@ -87,7 +87,7 @@ const Partnerships = () => {
             alt="Strategic Partnerships" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/90 to-background/95" />
+          <div className="absolute inset-0 bg-primary-dark/80" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up text-white">

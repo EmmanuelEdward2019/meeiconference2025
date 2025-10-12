@@ -20,7 +20,7 @@ const Contact = () => {
             alt="Contact Us" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/90 to-background/95" />
+          <div className="absolute inset-0 bg-primary-dark/80" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up text-white">
@@ -44,18 +44,18 @@ const Contact = () => {
                 <Mail className="w-8 h-8 text-secondary mb-4" />
                 <h3 className="font-semibold mb-2">Email Us</h3>
                 <a
-                  href="mailto:info@ng-tr-summit.com"
+                  href="mailto:info@meeiprogram.org"
                   className="text-primary hover:text-secondary transition-colors"
                 >
-                  info@ng-tr-summit.com
+                  info@meeiprogram.org
                 </a>
               </Card>
 
               <Card className="p-6">
                 <Phone className="w-8 h-8 text-secondary mb-4" />
                 <h3 className="font-semibold mb-2">Call Us</h3>
-                <p className="text-muted-foreground">Nigeria: +234 XXX XXX XXXX</p>
-                <p className="text-muted-foreground">Türkiye: +90 XXX XXX XXXX</p>
+                <p className="text-muted-foreground">Türkiye: +44 7555 470238</p>
+                <p className="text-muted-foreground">Nigeria: +905319657443</p>
               </Card>
 
               <Card className="p-6">

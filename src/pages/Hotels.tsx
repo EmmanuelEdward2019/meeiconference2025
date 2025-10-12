@@ -65,7 +65,7 @@ const Hotels = () => {
             alt="Hotels" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/90 to-background/95" />
+          <div className="absolute inset-0 bg-primary-dark/80" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up text-white">
@@ -128,7 +128,12 @@ const Hotels = () => {
                     <p className="font-semibold text-secondary">{mainVenue.specialRate}</p>
                   </div>
 
-                  <Button className="btn-secondary w-full">Book Now</Button>
+                  <Button 
+                    className="btn-secondary w-full"
+                    onClick={() => window.open('https://www.booking.com/hotel/tr/hilton-istanbul-kozyatagi-conference-center-amp-spa.en-gb.html?aid=2276376&label=msn-_EQD6VJWF74TAhKkGIpLIg-80333266612016%3Atikwd-80333464073243%3Aloc-137%3Aneo%3Amte%3Alp142650%3Adec%3AqsHilton%20Hotel%2C%20Kozyata%C4%9F%C4%B1%20Istanbul%2C%20T%C3%BCrkiye&sid=67bc506d9f3d38fb9285243cab41aa9c&dest_id=-755070&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1760222850&srpvid=ab30a0373e93031b&type=total&ucfs=1&', '_blank')}
+                  >
+                    Book Now
+                  </Button>
                 </div>
               </div>
             </Card>

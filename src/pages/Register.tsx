@@ -283,21 +283,6 @@ const Register = () => {
                   </div>
                 </div>
 
-                {/* Registration Package */}
-                <div>
-                  <h3 className="text-xl font-semibold mb-4">Select Package *</h3>
-                  <Select value={formData.package} onValueChange={(value) => setFormData({...formData, package: value})} required>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Choose registration package" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Standard Delegate">Standard Delegate - $500</SelectItem>
-                      <SelectItem value="Premium Delegate">Premium Delegate - $850</SelectItem>
-                      <SelectItem value="Corporate Package">Corporate Package - $2,500</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
                 {/* Additional Options */}
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Areas of Interest</h3>
@@ -354,14 +339,14 @@ const Register = () => {
         </div>
       </section>
 
-      {/* Early Bird Notice */}
+      {/* Free Event Notice */}
       <section className="py-20 bg-secondary text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            Early Bird Discount Available!
+            Free Event - Registration Required
           </h2>
           <p className="text-xl mb-4">
-            Register before August 31, 2025 and save 20% on all packages
+            This is a complimentary event, but registration is mandatory
           </p>
           <p className="text-lg opacity-90">
             Limited spots available • Register now to secure your place

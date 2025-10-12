@@ -33,13 +33,13 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-2">
                 <Mail size={16} className="text-secondary" />
-                <a href="mailto:info@ng-tr-summit.com" className="hover:text-secondary transition-colors">
-                  info@ng-tr-summit.com
+                <a href="mailto:info@meeiprogram.org" className="hover:text-secondary transition-colors">
+                  info@meeiprogram.org
                 </a>
               </li>
               <li className="flex items-center space-x-2">
                 <Phone size={16} className="text-secondary" />
-                <span>+90 XXX XXX XXXX</span>
+                <span className="text-sm">TR: +44 7555 470238 | NG: +905319657443</span>
               </li>
             </ul>
           </div>
@@ -47,16 +47,16 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4 text-secondary">Follow Us</h4>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-secondary transition-colors">
+              <a href="https://www.facebook.com/share/c4qNuBD1632vVf7n/?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="hover:text-secondary transition-colors">
-                <Twitter size={20} />
+              <a href="https://youtube.com/@meeiprogram?si=dOSqmVexDsco9YgC" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
               </a>
-              <a href="#" className="hover:text-secondary transition-colors">
+              <a href="https://www.linkedin.com/company/mindshift-empowerment-and-employment-initiative/" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="hover:text-secondary transition-colors">
+              <a href="https://www.instagram.com/meeiprogram/profilecard/?igsh=MTR0YWVuaGF3OGQ2eg==" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
                 <Instagram size={20} />
               </a>
             </div>
@@ -64,7 +64,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/10 pt-6 text-center text-sm text-gray-400">
-          <p>&copy; 2025 Nigeria-Türkiye Business & Investment Summit. All rights reserved.</p>
+          <p>&copy; 2025 Nigeria-Türkiye Business & Investment Summit. All rights reserved. | Designed by <a href="https://techfieldsdigital.com.ng" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">Techfields</a></p>
         </div>
       </div>
     </footer>
