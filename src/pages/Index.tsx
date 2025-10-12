@@ -9,9 +9,9 @@ import businessBreakfast from "@/assets/business-breakfast.jpeg";
 import agriculture from "@/assets/agriculture-2.jpg";
 import telecommunications from "@/assets/telecommunications-2.jpg";
 import logistics from "@/assets/logistics-2.jpg";
-import industrial from "@/assets/industrial.jpg";
+import meetingRoom from "@/assets/meeting-room.jpeg";
 import venue from "@/assets/venue.jpg";
-import partnership from "@/assets/partnership.jpg";
+import networking from "@/assets/networking.jpeg";
 
 const Index = () => {
   const speakers = [
@@ -172,7 +172,7 @@ const Index = () => {
             </div>
             <div className="animate-fade-in-up">
               <img
-                src={industrial}
+                src={meetingRoom}
                 alt="Manufacturing facility"
                 className="rounded-lg shadow-2xl hover:scale-105 transition-transform duration-500"
               />
@@ -222,7 +222,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-up order-2 md:order-1">
               <img
-                src={partnership}
+                src={networking}
                 alt="Business partnership"
                 className="rounded-lg shadow-2xl hover:scale-105 transition-transform duration-500"
               />
