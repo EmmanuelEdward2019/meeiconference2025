@@ -66,7 +66,7 @@ const Index = () => {
         
         <div className="container mx-auto px-4 z-20 text-center text-white pt-20">
           <div className="animate-fade-in-up">
-            <div className="inline-block mb-6 px-6 py-2 bg-secondary/20 backdrop-blur-sm rounded-full border border-secondary/30">
+            <div className="inline-block mb-6 mt-8 md:mt-0 px-6 py-2 bg-secondary/20 backdrop-blur-sm rounded-full border border-secondary/30">
               <span className="text-secondary font-semibold">Main Program: 22nd October 2025</span>
             </div>
             
@@ -81,7 +81,7 @@ const Index = () => {
               A Strategic Approach to Industrial Growth and Economic Stability"
             </p>
 
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 my-8 text-lg">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 my-8 mt-12 md:mt-8 text-lg">
               <div className="flex items-center gap-2">
                 <Calendar className="text-secondary" size={24} />
                 <span>Main Event: 22nd October 2025</span>
@@ -92,7 +92,7 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12 mb-8 md:mb-0">
               <Link to="/register">
                 <Button className="btn-secondary text-lg px-12 py-6">
                   REGISTER NOW

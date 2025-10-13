@@ -95,9 +95,13 @@ const Register = () => {
 
       toast({
         title: "Registration Submitted!",
-        description: "Thank you for registering. We'll contact you shortly.",
+        description: "Redirecting to confirmation page...",
       });
-      navigate("/");
+      
+      // Redirect to thank you page
+      setTimeout(() => {
+        navigate("/thank-you");
+      }, 1500);
     } catch (error: any) {
       toast({
         title: "Error",
