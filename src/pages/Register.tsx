@@ -12,6 +12,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Check } from "lucide-react";
+import conferenceImg from "@/assets/conference.jpg";
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
@@ -122,9 +123,17 @@ const Register = () => {
       <Navigation />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-primary-dark to-background text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src={conferenceImg} 
+            alt="Register" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-primary-dark/80" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in-up text-white">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Register for the <span className="text-secondary">Summit</span>
             </h1>
@@ -135,41 +144,6 @@ const Register = () => {
         </div>
       </section>
 
-      {/* Registration Packages */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center">
-            Registration <span className="text-secondary">Packages</span>
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-            {packages.map((pkg, index) => (
-              <Card
-                key={index}
-                className={`p-8 hover:shadow-xl transition-all duration-300 ${
-                  index === 1 ? 'border-4 border-secondary scale-105' : ''
-                }`}
-              >
-                {index === 1 && (
-                  <div className="bg-secondary text-white text-center py-2 -mx-8 -mt-8 mb-6 rounded-t-lg font-semibold">
-                    MOST POPULAR
-                  </div>
-                )}
-                <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
-                <div className="text-4xl font-bold text-secondary mb-6">{pkg.price}</div>
-                <ul className="space-y-3 mb-8">
-                  {pkg.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm">
-                      <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Registration Form */}
       <section className="py-20 bg-muted">

@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      contact_submissions: {
+        Row: {
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          message: string
+          organization: string | null
+          phone: string | null
+          subject: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          last_name: string
+          message: string
+          organization?: string | null
+          phone?: string | null
+          subject: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          message?: string
+          organization?: string | null
+          phone?: string | null
+          subject?: string
+        }
+        Relationships: []
+      }
       registrations: {
         Row: {
           country: string
@@ -83,6 +119,51 @@ export type Database = {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
+        }
+        Relationships: []
+      }
+      visitor_analytics: {
+        Row: {
+          browser: string | null
+          city: string | null
+          country: string | null
+          device_type: string | null
+          id: string
+          ip_address: string | null
+          os: string | null
+          page_path: string
+          referrer: string | null
+          session_id: string
+          user_agent: string | null
+          visited_at: string
+        }
+        Insert: {
+          browser?: string | null
+          city?: string | null
+          country?: string | null
+          device_type?: string | null
+          id?: string
+          ip_address?: string | null
+          os?: string | null
+          page_path: string
+          referrer?: string | null
+          session_id: string
+          user_agent?: string | null
+          visited_at?: string
+        }
+        Update: {
+          browser?: string | null
+          city?: string | null
+          country?: string | null
+          device_type?: string | null
+          id?: string
+          ip_address?: string | null
+          os?: string | null
+          page_path?: string
+          referrer?: string | null
+          session_id?: string
+          user_agent?: string | null
+          visited_at?: string
         }
         Relationships: []
       }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -6,8 +7,67 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import groupPhotoImg from "@/assets/group-photo.jpeg";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    organization: "",
+    subject: "",
+    message: ""
+  });
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const { error } = await supabase.from("contact_submissions").insert([
+        {
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          organization: formData.organization,
+          subject: formData.subject,
+          message: formData.message
+        }
+      ]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        organization: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -80,19 +140,29 @@ const Contact = () => {
             {/* Contact Form */}
             <Card className="lg:col-span-2 p-8">
               <h2 className="text-3xl font-bold mb-6">Send Us a Message</h2>
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium mb-2">
                       First Name *
                     </label>
-                    <Input placeholder="John" />
+                    <Input 
+                      placeholder="John" 
+                      value={formData.firstName}
+                      onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                      required
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">
                       Last Name *
                     </label>
-                    <Input placeholder="Doe" />
+                    <Input 
+                      placeholder="Doe"
+                      value={formData.lastName}
+                      onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                      required
+                    />
                   </div>
                 </div>
 
@@ -100,28 +170,48 @@ const Contact = () => {
                   <label className="block text-sm font-medium mb-2">
                     Email Address *
                   </label>
-                  <Input type="email" placeholder="john.doe@example.com" />
+                  <Input 
+                    type="email" 
+                    placeholder="john.doe@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    required
+                  />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     Phone Number
                   </label>
-                  <Input type="tel" placeholder="+234 XXX XXX XXXX" />
+                  <Input 
+                    type="tel" 
+                    placeholder="+234 XXX XXX XXXX"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     Organization
                   </label>
-                  <Input placeholder="Your Company Name" />
+                  <Input 
+                    placeholder="Your Company Name"
+                    value={formData.organization}
+                    onChange={(e) => setFormData({...formData, organization: e.target.value})}
+                  />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     Subject *
                   </label>
-                  <Input placeholder="How can we help you?" />
+                  <Input 
+                    placeholder="How can we help you?"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                    required
+                  />
                 </div>
 
                 <div>
@@ -131,11 +221,18 @@ const Contact = () => {
                   <Textarea
                     placeholder="Tell us more about your inquiry..."
                     rows={6}
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    required
                   />
                 </div>
 
-                <Button className="btn-secondary w-full md:w-auto px-12">
-                  Send Message
+                <Button 
+                  type="submit" 
+                  className="btn-secondary w-full md:w-auto px-12"
+                  disabled={loading}
+                >
+                  {loading ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </Card>

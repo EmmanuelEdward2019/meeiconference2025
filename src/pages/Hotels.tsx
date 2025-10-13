@@ -3,7 +3,8 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Star, Phone, Mail, Wifi, Coffee, Car, Utensils } from "lucide-react";
-import venue from "@/assets/venue.jpg";
+import hiltonHotel from "@/assets/hilton-hotel.jpg";
+import hiltonInterior from "@/assets/hilton-hotel-interior.jpg";
 import breakfastImg from "@/assets/business-breakfast-5.jpeg";
 
 const Hotels = () => {
@@ -95,7 +96,7 @@ const Hotels = () => {
             <Card className="overflow-hidden">
               <div className="grid md:grid-cols-2">
                 <img
-                  src={venue}
+                  src={hiltonHotel}
                   alt="Hilton Istanbul Kozyatağı"
                   className="w-full h-full object-cover"
                 />

@@ -10,7 +10,7 @@ import agriculture from "@/assets/agriculture-2.jpg";
 import telecommunications from "@/assets/telecommunications-2.jpg";
 import logistics from "@/assets/logistics-2.jpg";
 import meetingRoom from "@/assets/meeting-room.jpeg";
-import venue from "@/assets/venue.jpg";
+import hiltonHotel from "@/assets/hilton-hotel.jpg";
 import networking from "@/assets/networking.jpeg";
 
 const Index = () => {
@@ -258,7 +258,7 @@ const Index = () => {
 
           <div className="max-w-5xl mx-auto animate-fade-in-up">
             <img
-              src={venue}
+              src={hiltonHotel}
               alt="Hilton Hotel Istanbul"
               className="rounded-lg shadow-2xl w-full mb-8"
             />

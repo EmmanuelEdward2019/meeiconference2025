@@ -31,8 +31,21 @@ interface Registration {
   created_at: string;
 }
 
+interface ContactSubmission {
+  id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string | null;
+  organization: string | null;
+  subject: string;
+  message: string;
+  created_at: string;
+}
+
 const Admin = () => {
   const [registrations, setRegistrations] = useState<Registration[]>([]);
+  const [contacts, setContacts] = useState<ContactSubmission[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
@@ -70,6 +83,7 @@ const Admin = () => {
 
     setIsAdmin(true);
     fetchRegistrations();
+    fetchContacts();
   };
 
   const fetchRegistrations = async () => {
@@ -90,6 +104,24 @@ const Admin = () => {
       });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchContacts = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("contact_submissions")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+      setContacts(data || []);
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
     }
   };
 
@@ -163,14 +195,20 @@ const Admin = () => {
             <img src={logo} alt="MEEI Conference" className="h-12" />
             <h1 className="text-2xl font-bold">Admin Dashboard</h1>
           </div>
-          <Button onClick={handleLogout} variant="outline" className="gap-2">
-            <LogOut size={16} />
-            Logout
-          </Button>
+          <div className="flex gap-2">
+            <Button onClick={() => navigate("/analytics")} variant="outline">
+              Analytics
+            </Button>
+            <Button onClick={handleLogout} variant="outline" className="gap-2">
+              <LogOut size={16} />
+              Logout
+            </Button>
+          </div>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 space-y-8">
+        {/* Registrations Section */}
         <Card className="p-6">
           <div className="flex justify-between items-center mb-6">
             <div>
@@ -216,6 +254,59 @@ const Admin = () => {
                       <TableCell>{reg.delegate_package}</TableCell>
                       <TableCell>
                         {new Date(reg.created_at).toLocaleDateString()}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          )}
+        </Card>
+
+        {/* Contact Submissions Section */}
+        <Card className="p-6">
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold mb-2">Contact Form Submissions</h2>
+            <p className="text-muted-foreground">
+              Total: {contacts.length} submissions
+            </p>
+          </div>
+
+          {loading ? (
+            <p>Loading contact submissions...</p>
+          ) : contacts.length === 0 ? (
+            <p className="text-center text-muted-foreground py-8">
+              No contact submissions yet.
+            </p>
+          ) : (
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Name</TableHead>
+                    <TableHead>Email</TableHead>
+                    <TableHead>Phone</TableHead>
+                    <TableHead>Organization</TableHead>
+                    <TableHead>Subject</TableHead>
+                    <TableHead>Message</TableHead>
+                    <TableHead>Date</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {contacts.map((contact) => (
+                    <TableRow key={contact.id}>
+                      <TableCell className="font-medium">
+                        {contact.first_name} {contact.last_name}
+                      </TableCell>
+                      <TableCell>{contact.email}</TableCell>
+                      <TableCell>{contact.phone || "N/A"}</TableCell>
+                      <TableCell>{contact.organization || "N/A"}</TableCell>
+                      <TableCell>{contact.subject}</TableCell>
+                      <TableCell className="max-w-xs truncate">
+                        {contact.message}
+                      </TableCell>
+                      <TableCell>
+                        {new Date(contact.created_at).toLocaleDateString()}
                       </TableCell>
                     </TableRow>
                   ))}
