@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import conference from "@/assets/conference.jpg";
 import businessBreakfast from "@/assets/business-breakfast.jpeg";
 import agriculture from "@/assets/agriculture-2.jpg";
@@ -12,6 +13,12 @@ import logistics from "@/assets/logistics-2.jpg";
 import meetingRoom from "@/assets/meeting-room.jpeg";
 import hiltonHotel from "@/assets/hilton-hotel.jpg";
 import networking from "@/assets/networking.jpeg";
+import partnerIstanbulConsulting from "@/assets/partner-istanbul-consulting.jpg";
+import partnerMinistry from "@/assets/partner-ministry-foreign-affairs.jpg";
+import partnerVega from "@/assets/partner-vega.png";
+import partnerPreston from "@/assets/partner-preston.jpg";
+import partnerTurcaf from "@/assets/partner-turcaf.png";
+import partnerTurkishAirlines from "@/assets/partner-turkish-airlines.png";
 
 const Index = () => {
   const speakers = [
@@ -287,6 +294,53 @@ const Index = () => {
                 <Button className="btn-primary">View Hotel Details</Button>
               </Link>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners Section */}
+      <section className="py-20 bg-muted">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Our <span className="text-secondary">Partners</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Collaborating with leading organizations to make this summit a success
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {[
+                  { src: partnerIstanbulConsulting, alt: "Istanbul Consulting Group" },
+                  { src: partnerMinistry, alt: "Federal Ministry of Foreign Affairs Nigeria" },
+                  { src: partnerVega, alt: "VEGA" },
+                  { src: partnerPreston, alt: "Preston Consults" },
+                  { src: partnerTurcaf, alt: "TURCAF" },
+                  { src: partnerTurkishAirlines, alt: "Turkish Airlines" },
+                ].map((partner, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <Card className="p-8 h-40 flex items-center justify-center hover:shadow-lg transition-all duration-300">
+                      <img
+                        src={partner.src}
+                        alt={partner.alt}
+                        className="max-h-24 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                      />
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex" />
+              <CarouselNext className="hidden md:flex" />
+            </Carousel>
           </div>
         </div>
       </section>
