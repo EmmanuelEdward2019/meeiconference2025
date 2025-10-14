@@ -19,9 +19,12 @@ import partnerVega from "@/assets/partner-vega.png";
 import partnerPreston from "@/assets/partner-preston.jpg";
 import partnerTurcaf from "@/assets/partner-turcaf.png";
 import partnerTurkishAirlines from "@/assets/partner-turkish-airlines.png";
+import drYavuzSilay from "@/assets/dr-yavuz-silay.png";
 
 const Index = () => {
   const speakers = [
+    { name: "Martins Arebun", title: "MEEI President", country: "Nigeria" },
+    { name: "Chief (Dr.) J. N. Green-Amakwe", title: "Special Adviser to Governor of Abia State on Investment Promotion/PPP", country: "Nigeria" },
     { name: "Dr. Daniel Deji Ayodele", title: "Founder, MEEI Program", country: "Nigeria" },
     { name: "Shehu Mohammed Bello", title: "Chairman, Revenue Mobilization Allocation & Fiscal Commission", country: "Nigeria" },
     { name: "Dr. Hasan Sert", title: "AK Party MKYK Member & Chairman, AfroTurk TV", country: "Türkiye" },
@@ -200,6 +203,40 @@ const Index = () => {
             </p>
           </div>
 
+          {/* Master of Ceremony - Dr. Yavuz Selim Silay */}
+          <div className="max-w-4xl mx-auto mb-16 animate-fade-in-up">
+            <div className="text-center mb-6">
+              <div className="inline-block px-6 py-2 bg-secondary/20 backdrop-blur-sm rounded-full border border-secondary/30 mb-4">
+                <span className="text-secondary font-semibold text-lg">Master of Ceremony</span>
+              </div>
+            </div>
+            <Card className="p-8 border-4 border-secondary hover:shadow-2xl transition-all duration-300">
+              <div className="flex flex-col md:flex-row gap-8 items-center">
+                <div className="flex-shrink-0">
+                  <img
+                    src={drYavuzSilay}
+                    alt="Dr. Yavuz Selim Silay"
+                    className="w-40 h-40 rounded-lg object-cover shadow-lg"
+                  />
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <div className="inline-block px-4 py-1 bg-primary/20 rounded-full mb-3">
+                    <span className="text-primary font-semibold">Türkiye</span>
+                  </div>
+                  <h3 className="text-3xl font-bold mb-2">Dr. Yavuz Selim Silay</h3>
+                  <p className="text-xl text-secondary font-semibold mb-4">
+                    CEO, Istanbul Consulting Group
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Leading expert in international business consulting and strategic partnerships, 
+                    facilitating cross-border cooperation and investment opportunities between Nigeria and Türkiye.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </div>
+
+          {/* Other Speakers Grid */}
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {speakers.map((speaker, index) => (
               <Card

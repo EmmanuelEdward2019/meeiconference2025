@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import meetingImg from "@/assets/meeting-room.jpeg";
+import drYavuzSilay from "@/assets/dr-yavuz-silay.png";
 
 const Speakers = () => {
   const speakerCategories = [
@@ -10,10 +11,16 @@ const Speakers = () => {
       category: "Keynote Speakers",
       speakers: [
         {
-          name: "Dr. Yavuz Selim Silay",
-          title: "Host & Master of Ceremony, CEO, Istanbul Consulting Group",
-          country: "Türkiye",
-          description: "Leading expert in international business consulting and strategic partnerships"
+          name: "Martins Arebun",
+          title: "MEEI President",
+          country: "Nigeria",
+          description: "President of the Manufacturing, Empowerment, and Employment Initiative"
+        },
+        {
+          name: "Chief (Dr.) J. N. Green-Amakwe",
+          title: "Special Adviser to Governor of Abia State on Investment Promotion/PPP",
+          country: "Nigeria",
+          description: "Leading government advisor on investment promotion and public-private partnerships"
         },
         {
           name: "Dr. Daniel Deji Ayodele",
@@ -158,7 +165,13 @@ const Speakers = () => {
             </div>
             <Card className="p-8 border-4 border-secondary">
               <div className="flex flex-col md:flex-row gap-6 items-center">
-                <div className="w-32 h-32 bg-gradient-to-br from-primary to-secondary rounded-lg flex-shrink-0" />
+                <div className="flex-shrink-0">
+                  <img
+                    src={drYavuzSilay}
+                    alt="Dr. Yavuz Selim Silay"
+                    className="w-40 h-40 rounded-lg object-cover shadow-lg"
+                  />
+                </div>
                 <div className="flex-1 text-center md:text-left">
                   <Badge variant="secondary" className="mb-3">Türkiye</Badge>
                   <h3 className="text-2xl font-bold mb-2">Dr. Yavuz Selim Silay</h3>
@@ -167,7 +180,7 @@ const Speakers = () => {
                   </p>
                   <p className="text-muted-foreground">
                     Leading expert in international business consulting and strategic partnerships, 
-                    facilitating cross-border cooperation and investment opportunities.
+                    facilitating cross-border cooperation and investment opportunities between Nigeria and Türkiye.
                   </p>
                 </div>
               </div>
