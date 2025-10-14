@@ -4,6 +4,11 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import meetingImg from "@/assets/meeting-room.jpeg";
 import drYavuzSilay from "@/assets/dr-yavuz-silay.png";
+import speakerMartinsArebun from "@/assets/speaker-martins-arebun.png";
+import speakerChiefGreen from "@/assets/speaker-chief-green.jpeg";
+import speakerDanielAyodele from "@/assets/speaker-daniel-ayodele.png";
+import speakerShehuBello from "@/assets/speaker-shehu-bello.jpg";
+import speakerHasanSert from "@/assets/speaker-hasan-sert.jpg";
 
 const Speakers = () => {
   const speakerCategories = [
@@ -14,31 +19,36 @@ const Speakers = () => {
           name: "Martins Arebun",
           title: "MEEI President",
           country: "Nigeria",
-          description: "President of the Manufacturing, Empowerment, and Employment Initiative"
+          description: "President of the Manufacturing, Empowerment, and Employment Initiative",
+          image: speakerMartinsArebun
         },
         {
           name: "Chief (Dr.) J. N. Green-Amakwe",
           title: "Special Adviser to Governor of Abia State on Investment Promotion/PPP",
           country: "Nigeria",
-          description: "Leading government advisor on investment promotion and public-private partnerships"
+          description: "Leading government advisor on investment promotion and public-private partnerships",
+          image: speakerChiefGreen
         },
         {
           name: "Dr. Daniel Deji Ayodele",
           title: "Founder, MEEI Program",
           country: "Nigeria",
-          description: "Visionary leader driving empowerment and employment initiatives across Africa"
+          description: "Visionary leader driving empowerment and employment initiatives across Africa",
+          image: speakerDanielAyodele
         },
         {
           name: "Shehu Mohammed Bello",
           title: "Chairman, Revenue Mobilization Allocation & Fiscal Commission",
           country: "Nigeria",
-          description: "Key policymaker in Nigeria's fiscal and economic development strategies"
+          description: "Key policymaker in Nigeria's fiscal and economic development strategies",
+          image: speakerShehuBello
         },
         {
           name: "Dr. Hasan Sert",
           title: "AK Party MKYK Member & Chairman, AfroTurk TV",
           country: "Türkiye",
-          description: "Prominent figure in Türkiye-Africa relations and media communication"
+          description: "Prominent figure in Türkiye-Africa relations and media communication",
+          image: speakerHasanSert
         },
         {
           name: "Yavuz Altun",
@@ -206,7 +216,15 @@ const Speakers = () => {
                   className="p-8 hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 hover:border-secondary"
                 >
                   <div className="flex gap-6">
-                    <div className="w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-lg flex-shrink-0" />
+                    {speaker.image ? (
+                      <img
+                        src={speaker.image}
+                        alt={speaker.name}
+                        className="w-24 h-24 rounded-lg object-cover shadow-lg flex-shrink-0"
+                      />
+                    ) : (
+                      <div className="w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-lg flex-shrink-0" />
+                    )}
                     <div className="flex-1">
                       <Badge
                         variant="secondary"

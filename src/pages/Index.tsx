@@ -20,14 +20,19 @@ import partnerPreston from "@/assets/partner-preston.jpg";
 import partnerTurcaf from "@/assets/partner-turcaf.png";
 import partnerTurkishAirlines from "@/assets/partner-turkish-airlines.png";
 import drYavuzSilay from "@/assets/dr-yavuz-silay.png";
+import speakerMartinsArebun from "@/assets/speaker-martins-arebun.png";
+import speakerChiefGreen from "@/assets/speaker-chief-green.jpeg";
+import speakerDanielAyodele from "@/assets/speaker-daniel-ayodele.png";
+import speakerShehuBello from "@/assets/speaker-shehu-bello.jpg";
+import speakerHasanSert from "@/assets/speaker-hasan-sert.jpg";
 
 const Index = () => {
   const speakers = [
-    { name: "Martins Arebun", title: "MEEI President", country: "Nigeria" },
-    { name: "Chief (Dr.) J. N. Green-Amakwe", title: "Special Adviser to Governor of Abia State on Investment Promotion/PPP", country: "Nigeria" },
-    { name: "Dr. Daniel Deji Ayodele", title: "Founder, MEEI Program", country: "Nigeria" },
-    { name: "Shehu Mohammed Bello", title: "Chairman, Revenue Mobilization Allocation & Fiscal Commission", country: "Nigeria" },
-    { name: "Dr. Hasan Sert", title: "AK Party MKYK Member & Chairman, AfroTurk TV", country: "Türkiye" },
+    { name: "Martins Arebun", title: "MEEI President", country: "Nigeria", image: speakerMartinsArebun },
+    { name: "Chief (Dr.) J. N. Green-Amakwe", title: "Special Adviser to Governor of Abia State on Investment Promotion/PPP", country: "Nigeria", image: speakerChiefGreen },
+    { name: "Dr. Daniel Deji Ayodele", title: "Founder, MEEI Program", country: "Nigeria", image: speakerDanielAyodele },
+    { name: "Shehu Mohammed Bello", title: "Chairman, Revenue Mobilization Allocation & Fiscal Commission", country: "Nigeria", image: speakerShehuBello },
+    { name: "Dr. Hasan Sert", title: "AK Party MKYK Member & Chairman, AfroTurk TV", country: "Türkiye", image: speakerHasanSert },
     { name: "Yavuz Altun", title: "CEO, Happy Center (Retail Sector)", country: "Türkiye" },
     { name: "Yasin Altay", title: "Istanbul Chamber of Commerce (Import/Export)", country: "Türkiye" },
     { name: "Prof. Dr. Abdulhakim Coşkun", title: "Managing Partner, Detagen Healthcare", country: "Türkiye" },
@@ -244,7 +249,15 @@ const Index = () => {
                 className="p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in-up border-2 hover:border-primary"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-full mx-auto mb-4" />
+                {speaker.image ? (
+                  <img
+                    src={speaker.image}
+                    alt={speaker.name}
+                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover shadow-lg"
+                  />
+                ) : (
+                  <div className="w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-full mx-auto mb-4" />
+                )}
                 <h3 className="text-xl font-semibold mb-2">{speaker.name}</h3>
                 <p className="text-sm text-muted-foreground mb-1">{speaker.title}</p>
                 <p className="text-sm text-secondary font-semibold">{speaker.country}</p>
