@@ -13,6 +13,7 @@ import speakerYavuzAltun from "@/assets/speaker-yavuz-altun.jpg";
 import speakerYasinAltay from "@/assets/speaker-yasin-altay.jpg";
 import speakerAbdulhakimCoskun from "@/assets/speaker-abdulhakim-coskun.png";
 import speakerZekiGuvercin from "@/assets/speaker-zeki-guvercin.jpg";
+import speakerBulentSen from "@/assets/speaker-bulent-sen.jpg";
 
 const Speakers = () => {
   const speakerCategories = [
@@ -70,7 +71,8 @@ const Speakers = () => {
           name: "Bülent Şen",
           title: "World Energy Council",
           country: "Türkiye",
-          description: "Global energy expert and strategic advisor on sustainable energy solutions"
+          description: "Global energy expert and strategic advisor on sustainable energy solutions",
+          image: speakerBulentSen
         }
       ]
     },
