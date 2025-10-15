@@ -12,6 +12,7 @@ import speakerHasanSert from "@/assets/speaker-hasan-sert.jpg";
 import speakerYavuzAltun from "@/assets/speaker-yavuz-altun.jpg";
 import speakerYasinAltay from "@/assets/speaker-yasin-altay.jpg";
 import speakerAbdulhakimCoskun from "@/assets/speaker-abdulhakim-coskun.png";
+import speakerZekiGuvercin from "@/assets/speaker-zeki-guvercin.jpg";
 
 const Speakers = () => {
   const speakerCategories = [
@@ -99,7 +100,8 @@ const Speakers = () => {
           name: "Zeki Güvercin",
           title: "CEO, Agroconnect",
           country: "Türkiye",
-          description: "Agricultural technology and supply chain innovation specialist"
+          description: "Agricultural technology and supply chain innovation specialist",
+          image: speakerZekiGuvercin
         },
         {
           name: "Tevfik Fikret Koca",
