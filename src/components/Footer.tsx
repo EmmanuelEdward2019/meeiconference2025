@@ -64,7 +64,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/10 pt-6 text-center text-sm text-gray-400">
-          <p>&copy; 2025 Nigeria-Türkiye Business & Investment Summit. All rights reserved. | Designed by <a href="https://techfieldsdigital.com.ng" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">Techfields</a></p>
+          <p>&copy; 2025 Nigeria-Türkiye Business & Investment Summit. All rights reserved. | Designed by <a href="https://techfieldsdigital.com.ng" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-400 transition-colors">Techfields</a></p>
         </div>
       </div>
     </footer>
