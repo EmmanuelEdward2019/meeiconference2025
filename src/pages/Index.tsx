@@ -25,6 +25,9 @@ import speakerChiefGreen from "@/assets/speaker-chief-green.jpeg";
 import speakerDanielAyodele from "@/assets/speaker-daniel-ayodele.png";
 import speakerShehuBello from "@/assets/speaker-shehu-bello.jpg";
 import speakerHasanSert from "@/assets/speaker-hasan-sert.jpg";
+import speakerYavuzAltun from "@/assets/speaker-yavuz-altun.jpg";
+import speakerYasinAltay from "@/assets/speaker-yasin-altay.jpg";
+import speakerAbdulhakimCoskun from "@/assets/speaker-abdulhakim-coskun.png";
 
 const Index = () => {
   const speakers = [
@@ -33,9 +36,9 @@ const Index = () => {
     { name: "Dr. Daniel Deji Ayodele", title: "Founder, MEEI Program", country: "Nigeria", image: speakerDanielAyodele },
     { name: "Shehu Mohammed Bello", title: "Chairman, Revenue Mobilization Allocation & Fiscal Commission", country: "Nigeria", image: speakerShehuBello },
     { name: "Dr. Hasan Sert", title: "AK Party MKYK Member & Chairman, AfroTurk TV", country: "Türkiye", image: speakerHasanSert },
-    { name: "Yavuz Altun", title: "CEO, Happy Center (Retail Sector)", country: "Türkiye" },
-    { name: "Yasin Altay", title: "Istanbul Chamber of Commerce (Import/Export)", country: "Türkiye" },
-    { name: "Prof. Dr. Abdulhakim Coşkun", title: "Managing Partner, Detagen Healthcare", country: "Türkiye" },
+    { name: "Yavuz Altun", title: "CEO, Happy Center (Retail Sector)", country: "Türkiye", image: speakerYavuzAltun },
+    { name: "Yasin Altay", title: "Istanbul Chamber of Commerce (Import/Export)", country: "Türkiye", image: speakerYasinAltay },
+    { name: "Prof. Dr. Abdulhakim Coşkun", title: "Managing Partner, Detagen Healthcare", country: "Türkiye", image: speakerAbdulhakimCoskun },
   ];
 
   const features = [

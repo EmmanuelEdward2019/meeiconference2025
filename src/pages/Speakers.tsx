@@ -9,6 +9,9 @@ import speakerChiefGreen from "@/assets/speaker-chief-green.jpeg";
 import speakerDanielAyodele from "@/assets/speaker-daniel-ayodele.png";
 import speakerShehuBello from "@/assets/speaker-shehu-bello.jpg";
 import speakerHasanSert from "@/assets/speaker-hasan-sert.jpg";
+import speakerYavuzAltun from "@/assets/speaker-yavuz-altun.jpg";
+import speakerYasinAltay from "@/assets/speaker-yasin-altay.jpg";
+import speakerAbdulhakimCoskun from "@/assets/speaker-abdulhakim-coskun.png";
 
 const Speakers = () => {
   const speakerCategories = [
@@ -54,7 +57,8 @@ const Speakers = () => {
           name: "Yavuz Altun",
           title: "CEO, Happy Center (Retail Sector)",
           country: "Türkiye",
-          description: "Leading retail industry expert with extensive market experience"
+          description: "Leading retail industry expert with extensive market experience",
+          image: speakerYavuzAltun
         }
       ]
     },
@@ -76,13 +80,15 @@ const Speakers = () => {
           name: "Yasin Altay",
           title: "Istanbul Chamber of Commerce (Import/Export)",
           country: "Türkiye",
-          description: "Expert in international trade and export development strategies"
+          description: "Expert in international trade and export development strategies",
+          image: speakerYasinAltay
         },
         {
           name: "Yavuz Altun",
           title: "CEO, Happy Center",
           country: "Türkiye",
-          description: "Retail sector leader with deep insights into consumer markets"
+          description: "Retail sector leader with deep insights into consumer markets",
+          image: speakerYavuzAltun
         }
       ]
     },
@@ -110,7 +116,8 @@ const Speakers = () => {
           name: "Prof. Dr. Abdulhakim Coşkun",
           title: "Managing Partner, Detagen Healthcare",
           country: "Türkiye",
-          description: "Healthcare innovation expert with extensive medical industry experience"
+          description: "Healthcare innovation expert with extensive medical industry experience",
+          image: speakerAbdulhakimCoskun
         }
       ]
     },
