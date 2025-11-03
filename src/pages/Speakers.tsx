@@ -197,7 +197,7 @@ const Speakers = () => {
                   <Badge variant="secondary" className="mb-3">Türkiye</Badge>
                   <h3 className="text-2xl font-bold mb-2">Dr. Yavuz Selim Silay</h3>
                   <p className="text-lg text-secondary font-semibold mb-3">
-                    CEO, Istanbul Consulting Group
+                    Founder AFROTURK TV & İstanbul Consulting Group
                   </p>
                   <p className="text-muted-foreground">
                     Leading expert in international business consulting and strategic partnerships, 

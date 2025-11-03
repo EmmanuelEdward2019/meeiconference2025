@@ -94,28 +94,28 @@ const Program = () => {
 
   const sideActivities = [
     {
-      date: "20th October",
+      date: "16th November",
       activity: "Arrival of Delegation & Istanbul City Tour"
     },
     {
-      date: "21st October",
+      date: "17th November",
       activity: "Factory Visits & Company Tours"
     },
     {
-      date: "22nd October",
+      date: "18th November",
       activity: "Main Summit Program",
       highlight: true
     },
     {
-      date: "23rd October",
+      date: "19th November",
       activity: "Private B2B Meetings & Media Engagements"
     },
     {
-      date: "24th October",
+      date: "20th November",
       activity: "Visit to Parliament House & Dinner with Minister of Agriculture (Ankara)"
     },
     {
-      date: "25th October",
+      date: "21st November",
       activity: "Departure of Delegation"
     }
   ];
@@ -146,7 +146,7 @@ const Program = () => {
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-lg">
               <div className="flex items-center gap-2">
                 <Calendar className="text-secondary" size={24} />
-                <span>Main Event: 22nd October 2025</span>
+                <span>Main Event: 18th November 2025</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="text-secondary" size={24} />
@@ -165,8 +165,8 @@ const Program = () => {
               Event <span className="text-secondary">Overview</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              The summit spans five days from October 20th to 25th, 2025, with the main program 
-              taking place on October 22nd at the prestigious Hilton Hotel Kozyatağı in Istanbul.
+              The summit spans five days from November 16th to 20th, 2025, with the main program 
+              taking place on November 18th at the prestigious Hilton Hotel Kozyatağı in Istanbul.
             </p>
           </div>
 
@@ -179,7 +179,7 @@ const Program = () => {
             <Card className="p-6 text-center hover:scale-105 transition-transform">
               <Clock className="w-12 h-12 text-secondary mx-auto mb-4" />
               <h3 className="text-xl font-bold mb-2">6 Hours</h3>
-              <p className="text-muted-foreground">Main summit program on Oct 22nd</p>
+              <p className="text-muted-foreground">Main summit program on Nov 18th</p>
             </Card>
             <Card className="p-6 text-center hover:scale-105 transition-transform">
               <Award className="w-12 h-12 text-secondary mx-auto mb-4" />
@@ -195,7 +195,7 @@ const Program = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <Badge variant="secondary" className="text-lg px-6 py-2 mb-4">22nd October 2025</Badge>
+              <Badge variant="secondary" className="text-lg px-6 py-2 mb-4">18th November 2025</Badge>
               <h2 className="text-4xl font-bold mb-4">
                 Main <span className="text-secondary">Program</span>
               </h2>
