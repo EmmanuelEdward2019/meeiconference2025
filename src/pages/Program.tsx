@@ -102,7 +102,7 @@ const Program = () => {
       activity: "Factory Visits & Company Tours"
     },
     {
-      date: "18th November",
+      date: "19th November",
       activity: "Main Summit Program",
       highlight: true
     },
@@ -146,7 +146,7 @@ const Program = () => {
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-lg">
               <div className="flex items-center gap-2">
                 <Calendar className="text-secondary" size={24} />
-                <span>Main Event: 18th November 2025</span>
+                <span>Main Event: 19th November 2025</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="text-secondary" size={24} />
@@ -166,7 +166,7 @@ const Program = () => {
             </h2>
             <p className="text-lg text-muted-foreground">
               The summit spans five days from November 16th to 20th, 2025, with the main program 
-              taking place on November 18th at the prestigious Hilton Hotel Kozyatağı in Istanbul.
+              taking place on November 19th at the prestigious Hilton Hotel Kozyatağı in Istanbul.
             </p>
           </div>
 
@@ -179,7 +179,7 @@ const Program = () => {
             <Card className="p-6 text-center hover:scale-105 transition-transform">
               <Clock className="w-12 h-12 text-secondary mx-auto mb-4" />
               <h3 className="text-xl font-bold mb-2">6 Hours</h3>
-              <p className="text-muted-foreground">Main summit program on Nov 18th</p>
+              <p className="text-muted-foreground">Main summit program on Nov 19th</p>
             </Card>
             <Card className="p-6 text-center hover:scale-105 transition-transform">
               <Award className="w-12 h-12 text-secondary mx-auto mb-4" />
@@ -195,7 +195,7 @@ const Program = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <Badge variant="secondary" className="text-lg px-6 py-2 mb-4">18th November 2025</Badge>
+              <Badge variant="secondary" className="text-lg px-6 py-2 mb-4">19th November 2025</Badge>
               <h2 className="text-4xl font-bold mb-4">
                 Main <span className="text-secondary">Program</span>
               </h2>
