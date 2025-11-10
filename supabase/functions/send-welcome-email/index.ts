@@ -1,5 +1,4 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -23,18 +22,13 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log(`Sending welcome email to: ${email}`);
 
-    // Create SMTP client with cPanel credentials
-    const client = new SMTPClient({
-      connection: {
-        hostname: "mail.meeiprogram.org",
-        port: 465,
-        tls: true,
-        auth: {
-          username: "info@meeiprogram.org",
-          password: Deno.env.get("SMTP_PASSWORD") as string,
-        },
-      },
-    });
+    // Prepare email data
+    const smtpPassword = Deno.env.get("SMTP_PASSWORD");
+    if (!smtpPassword) {
+      throw new Error("SMTP_PASSWORD not configured");
+    }
+
+    const auth = btoa(`info@meeiprogram.org:${smtpPassword}`);
 
     // Email HTML template
     const emailHtml = `
@@ -146,18 +140,65 @@ const handler = async (req: Request): Promise<Response> => {
       </html>
     `;
 
-    // Send email
-    await client.send({
-      from: "info@meeiprogram.org",
-      to: email,
-      subject: "Welcome to Türkiye–Nigeria Business & Investment Summit 2025",
-      content: emailHtml,
-      html: emailHtml,
+    // Send email via SMTP using raw connection
+    const boundary = "----=_Part_" + Date.now();
+    const emailContent = [
+      `From: "Türkiye–Nigeria Summit" <info@meeiprogram.org>`,
+      `To: ${email}`,
+      `Subject: Welcome to Türkiye–Nigeria Business & Investment Summit 2025`,
+      `MIME-Version: 1.0`,
+      `Content-Type: multipart/alternative; boundary="${boundary}"`,
+      ``,
+      `--${boundary}`,
+      `Content-Type: text/html; charset=UTF-8`,
+      `Content-Transfer-Encoding: quoted-printable`,
+      ``,
+      emailHtml,
+      `--${boundary}--`,
+    ].join("\r\n");
+
+    // Connect to SMTP server and send email
+    const conn = await Deno.connectTls({
+      hostname: "mail.meeiprogram.org",
+      port: 465,
     });
 
-    await client.close();
+    const encoder = new TextEncoder();
+    const decoder = new TextDecoder();
 
-    console.log(`Welcome email sent successfully to: ${email}`);
+    // Helper to read SMTP responses
+    const readResponse = async () => {
+      const buffer = new Uint8Array(1024);
+      const n = await conn.read(buffer);
+      return n ? decoder.decode(buffer.subarray(0, n)) : "";
+    };
+
+    // Helper to send SMTP commands
+    const sendCommand = async (command: string) => {
+      await conn.write(encoder.encode(command + "\r\n"));
+      return await readResponse();
+    };
+
+    try {
+      // SMTP conversation
+      await readResponse(); // Read server greeting
+      await sendCommand("EHLO meeiprogram.org");
+      await sendCommand(`AUTH LOGIN`);
+      await sendCommand(btoa("info@meeiprogram.org"));
+      await sendCommand(btoa(smtpPassword));
+      await sendCommand(`MAIL FROM:<info@meeiprogram.org>`);
+      await sendCommand(`RCPT TO:<${email}>`);
+      await sendCommand("DATA");
+      await conn.write(encoder.encode(emailContent + "\r\n.\r\n"));
+      await readResponse();
+      await sendCommand("QUIT");
+      
+      conn.close();
+      console.log(`Welcome email sent successfully to: ${email}`);
+    } catch (smtpError: any) {
+      conn.close();
+      throw new Error(`SMTP Error: ${smtpError.message}`);
+    }
 
     return new Response(
       JSON.stringify({ success: true, message: "Welcome email sent successfully" }),
