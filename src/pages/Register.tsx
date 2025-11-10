@@ -93,6 +93,20 @@ const Register = () => {
 
       if (error) throw error;
 
+      // Send welcome email
+      try {
+        await supabase.functions.invoke('send-welcome-email', {
+          body: {
+            name: formData.fullName,
+            email: formData.email,
+          },
+        });
+        console.log("Welcome email sent successfully");
+      } catch (emailError: any) {
+        console.error("Error sending welcome email:", emailError);
+        // Don't block registration if email fails
+      }
+
       toast({
         title: "Registration Submitted!",
         description: "Redirecting to confirmation page...",
