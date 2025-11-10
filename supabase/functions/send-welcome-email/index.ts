@@ -137,7 +137,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email via Resend
     const emailResponse = await resend.emails.send({
-      from: "Türkiye–Nigeria Summit <onboarding@resend.dev>",
+      from: "Türkiye–Nigeria Summit <info@techfieldsdigital.com.ng>",
       to: [email],
       subject: "Welcome to Türkiye–Nigeria Business & Investment Summit 2025",
       html: emailHtml,
