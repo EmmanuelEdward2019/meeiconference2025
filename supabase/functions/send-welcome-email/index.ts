@@ -25,10 +25,11 @@ const handler = async (req: Request): Promise<Response> => {
     const { name, email }: WelcomeEmailRequest = await req.json();
     console.log(`Sending welcome email to: ${email}`);
 
-    // Read and encode logo as base64
+    // Read and encode logo as base64 (use URL relative to module for reliability on Edge Functions)
     let logoBase64 = "";
     try {
-      const logoBytes = await Deno.readFile("./logo.png");
+      const logoUrl = new URL("./logo.png", import.meta.url);
+      const logoBytes = await Deno.readFile(logoUrl);
       logoBase64 = base64Encode(logoBytes);
     } catch (error) {
       console.warn("Could not read logo file:", error);
