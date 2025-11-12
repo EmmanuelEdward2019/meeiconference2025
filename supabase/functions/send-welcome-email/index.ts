@@ -28,9 +28,6 @@ const handler = async (req: Request): Promise<Response> => {
     // Email HTML template (unchanged content)
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
-        <div style="text-align: center; margin-bottom: 30px;">
-          <img src="https://ntbis2025.meeiconference.org/assets/logo-B39dy_jX.png" alt="MEEI Conference Logo" style="max-width: 180px; height: auto; display: block; margin: 0 auto;" />
-        </div>
 
         <h1 style="text-align: center; color: #1a1a1a;">
           Türkiye–Nigeria Business & Investment Summit 2025
