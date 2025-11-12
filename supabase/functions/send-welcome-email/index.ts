@@ -42,6 +42,7 @@ const handler = async (req: Request): Promise<Response> => {
                 <!-- Header with Logo -->
                 <tr>
                   <td style="padding: 40px 40px 20px; text-align: center; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 8px 8px 0 0;">
+                    <img src="https://meeiprogram.org/logo.png" alt="MEEI Conference Logo" style="max-width: 180px; height: auto; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
                     <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 700; line-height: 1.3;">
                       Türkiye–Nigeria<br>Business & Investment Summit 2025
                     </h1>
