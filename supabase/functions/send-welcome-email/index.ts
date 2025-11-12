@@ -155,8 +155,8 @@ const handler = async (req: Request): Promise<Response> => {
             {
               filename: "logo.png",
               content: logoBase64,
-              contentId: "logo-image",
-            },
+              content_id: "logo-image",
+            } as any,
           ]
         : undefined,
     });
