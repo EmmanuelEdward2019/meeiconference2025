@@ -1,0 +1,17 @@
+﻿= : The term '=' is not recognized as the name of a cmdlet, function, script 
+file, or operable program. Check the spelling of the name, or if a path was 
+included, verify that the path is correct and try again.
+At line:1 char:2
++  = [IO.File]::ReadAllBytes('public\logo.png'); [Convert]::ToBase64Str ...
++  ~
+    + CategoryInfo          : ObjectNotFound: (=:String) [], CommandNotFoundEx 
+   ception
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+Cannot find an overload for "ToBase64String" and the argument count: "0".
+At line:1 char:48
++ ... O.File]::ReadAllBytes('public\logo.png'); [Convert]::ToBase64String()
++                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodException
+    + FullyQualifiedErrorId : MethodCountCouldNotFindBest
+ 
