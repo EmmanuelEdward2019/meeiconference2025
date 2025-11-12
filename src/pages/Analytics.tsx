@@ -41,12 +41,24 @@ const Analytics = () => {
   const [stats, setStats] = useState<AnalyticsStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [startDate, setStartDate] = useState<string>("");
+  const [endDate, setEndDate] = useState<string>("");
+  const [autoRefresh, setAutoRefresh] = useState<boolean>(true);
+  const [refreshSeconds, setRefreshSeconds] = useState<number>(30);
   const navigate = useNavigate();
   const { toast } = useToast();
 
   useEffect(() => {
     checkAuth();
   }, []);
+
+  useEffect(() => {
+    if (!autoRefresh) return;
+    const id = setInterval(() => {
+      fetchAnalytics();
+    }, refreshSeconds * 1000);
+    return () => clearInterval(id);
+  }, [autoRefresh, refreshSeconds]);
 
   const checkAuth = async () => {
     const { data: { session } } = await supabase.auth.getSession();
@@ -81,11 +93,23 @@ const Analytics = () => {
   const fetchAnalytics = async () => {
     setLoading(true);
     try {
-      const { data, error } = await supabase
+      let query = supabase
         .from("visitor_analytics")
         .select("*")
         .order("visited_at", { ascending: false })
-        .limit(100);
+        .limit(500);
+
+      if (startDate) {
+        query = query.gte("visited_at", new Date(startDate).toISOString());
+      }
+      if (endDate) {
+        // include entire end day
+        const end = new Date(endDate);
+        end.setHours(23, 59, 59, 999);
+        query = query.lte("visited_at", end.toISOString());
+      }
+
+      const { data, error } = await query;
 
       if (error) throw error;
       
@@ -179,6 +203,54 @@ const Analytics = () => {
       </header>
 
       <main className="container mx-auto px-4 py-8">
+        {/* Filters */}
+        <Card className="p-6 mb-8">
+          <div className="grid md:grid-cols-4 gap-4 items-end">
+            <div>
+              <label className="block text-sm text-muted-foreground mb-1">Start date</label>
+              <input
+                type="date"
+                className="w-full border rounded-md h-10 px-3 bg-background"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="block text-sm text-muted-foreground mb-1">End date</label>
+              <input
+                type="date"
+                className="w-full border rounded-md h-10 px-3 bg-background"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="block text-sm text-muted-foreground mb-1">Auto refresh (sec)</label>
+              <div className="flex items-center gap-2">
+                <input
+                  type="number"
+                  min={5}
+                  className="w-full border rounded-md h-10 px-3 bg-background"
+                  value={refreshSeconds}
+                  onChange={(e) => setRefreshSeconds(Math.max(5, Number(e.target.value) || 30))}
+                  disabled={!autoRefresh}
+                />
+                <label className="flex items-center gap-2 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={autoRefresh}
+                    onChange={(e) => setAutoRefresh(e.target.checked)}
+                  />
+                  Auto
+                </label>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <Button onClick={fetchAnalytics} className="w-full">Apply</Button>
+              <Button variant="outline" className="w-full" onClick={() => { setStartDate(""); setEndDate(""); fetchAnalytics(); }}>Reset</Button>
+            </div>
+          </div>
+        </Card>
         {/* Stats Cards */}
         {stats && (
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

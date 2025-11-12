@@ -19,6 +19,7 @@ import Admin from "./pages/Admin";
 import Analytics from "./pages/Analytics";
 import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
+import VisitorTracker from "./components/VisitorTracker";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <VisitorTracker />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
