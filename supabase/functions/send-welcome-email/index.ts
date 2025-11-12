@@ -26,6 +26,16 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log(`Sending welcome email to: ${email}`);
 
+    // Load logo as base64 for inline embedding
+    let logoDataUrl = "";
+    try {
+      const logoBytes = await Deno.readFile(new URL("./logo.png", import.meta.url));
+      const logoBase64 = base64Encode(logoBytes.buffer);
+      logoDataUrl = `data:image/png;base64,${logoBase64}`;
+    } catch (e) {
+      console.error("Failed to load logo:", e);
+    }
+
     // Email HTML template
     const emailHtml = `
       <!DOCTYPE html>
@@ -43,7 +53,7 @@ const handler = async (req: Request): Promise<Response> => {
                 <!-- Header with Logo -->
                 <tr>
                   <td style="padding: 40px 40px 20px; text-align: center; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 8px 8px 0 0;">
-                    <img src="cid:logo-image" alt="MEEI Conference Logo" style="max-width: 180px; height: auto; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
+                    ${logoDataUrl ? `<img src="${logoDataUrl}" alt="MEEI Conference Logo" style="max-width: 180px; height: auto; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">` : ''}
                     <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 700; line-height: 1.3;">
                       Türkiye–Nigeria<br>Business & Investment Summit 2025
                     </h1>
@@ -136,29 +146,12 @@ const handler = async (req: Request): Promise<Response> => {
       </html>
     `;
 
-    // Send email via Resend with inline logo as CID attachment
-    let logoBase64: string | null = null;
-    try {
-      const logoBytes = await Deno.readFile(new URL("./logo.png", import.meta.url));
-      logoBase64 = base64Encode(logoBytes.buffer);
-    } catch (e) {
-      console.error("Failed to load inline logo:", e);
-    }
-
+    // Send email via Resend
     const emailResponse = await resend.emails.send({
       from: "Türkiye–Nigeria Summit <info@techfieldsdigital.com.ng>",
       to: [email],
       subject: "Welcome to Türkiye–Nigeria Business & Investment Summit 2025",
       html: emailHtml,
-      attachments: logoBase64
-        ? [
-            {
-              filename: "logo.png",
-              content: logoBase64,
-              content_id: "logo-image",
-            } as any,
-          ]
-        : undefined,
     });
 
     console.log("Email sent successfully:", emailResponse);
