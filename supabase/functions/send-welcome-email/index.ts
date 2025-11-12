@@ -6,8 +6,7 @@ const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
 interface WelcomeEmailRequest {
@@ -23,19 +22,23 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const { name, email }: WelcomeEmailRequest = await req.json();
-
     console.log(`Sending welcome email to: ${email}`);
 
-    // Load logo as base64 to attach as inline CID image
+    // Load logo as base64 for inline embedding
     let logoBase64: string | null = null;
     try {
       const logoBytes = await Deno.readFile(new URL("./logo.png", import.meta.url));
-      logoBase64 = base64Encode(logoBytes.buffer);
+      logoBase64 = base64Encode(logoBytes);
     } catch (e) {
       console.error("Failed to load logo:", e);
     }
 
-    // Email HTML template
+    // Base64 inline data URI and fallback URL
+    const logoDataUri = logoBase64
+      ? `data:image/png;base64,${logoBase64}`
+      : "https://ntbis2025.meeiconference.org/assets/logo-B39dy_jX.png";
+
+    // === Email HTML Template (unaltered content) ===
     const emailHtml = `
       <!DOCTYPE html>
       <html lang="en">
@@ -52,24 +55,29 @@ const handler = async (req: Request): Promise<Response> => {
                 <!-- Header with Logo -->
                 <tr>
                   <td style="padding: 40px 40px 20px; text-align: center; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 8px 8px 0 0;">
-                    <img src="cid:logo-image" alt="MEEI Conference Logo" style="max-width: 180px; height: auto; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
+                    <img 
+                      src="${logoDataUri}" 
+                      alt="MEEI Conference Logo" 
+                      style="max-width: 180px; height: auto; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;" 
+                      onerror="this.onerror=null;this.src='https://ntbis2025.meeiconference.org/assets/logo-B39dy_jX.png';"
+                    >
                     <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 700; line-height: 1.3;">
                       Türkiye–Nigeria<br>Business & Investment Summit 2025
                     </h1>
                   </td>
                 </tr>
-                
+
                 <!-- Main Content -->
                 <tr>
                   <td style="padding: 40px;">
                     <p style="margin: 0 0 20px; color: #333333; font-size: 16px; line-height: 1.6;">
                       Dear ${name},
                     </p>
-                    
+
                     <p style="margin: 0 0 20px; color: #333333; font-size: 16px; line-height: 1.6;">
                       Thank you for registering for the <strong>Türkiye–Nigeria Business & Investment Summit 2025</strong>. We are thrilled to have you join us for this prestigious event taking place from <strong>November 16-20, 2025</strong>, with the main event on <strong>November 19, 2025</strong>.
                     </p>
-                    
+
                     <p style="margin: 0 0 20px; color: #333333; font-size: 16px; line-height: 1.6;">
                       This summit brings together business leaders, investors, and policymakers from Türkiye and Nigeria to explore collaboration opportunities in trade, investment, and economic development.
                     </p>
@@ -100,9 +108,7 @@ const handler = async (req: Request): Promise<Response> => {
                           </p>
                         </td>
                       </tr>
-                      <tr>
-                        <td style="height: 10px;"></td>
-                      </tr>
+                      <tr><td style="height: 10px;"></td></tr>
                       <tr>
                         <td style="padding: 15px; background-color: #f8f9fa; border-radius: 4px;">
                           <p style="margin: 0 0 10px; color: #1a1a1a; font-size: 15px; font-weight: 600;">
@@ -118,14 +124,14 @@ const handler = async (req: Request): Promise<Response> => {
                     <p style="margin: 30px 0 0; color: #333333; font-size: 16px; line-height: 1.6;">
                       We look forward to welcoming you to this landmark event!
                     </p>
-                    
+
                     <p style="margin: 20px 0 0; color: #333333; font-size: 16px; line-height: 1.6;">
                       Best regards,<br>
                       <strong>The Summit Organizing Team</strong>
                     </p>
                   </td>
                 </tr>
-                
+
                 <!-- Footer -->
                 <tr>
                   <td style="padding: 30px 40px; background-color: #f8f9fa; border-radius: 0 0 8px 8px; text-align: center;">
@@ -145,23 +151,13 @@ const handler = async (req: Request): Promise<Response> => {
       </html>
     `;
 
-    // Send email via Resend
-    // Send email via Resend with CID inline image
+    // Send email via Resend (without CID, since inline+fallback is used)
     const emailResponse = await resend.emails.send({
       from: "Türkiye–Nigeria Summit <info@techfieldsdigital.com.ng>",
       to: [email],
       subject: "Welcome to Türkiye–Nigeria Business & Investment Summit 2025",
       html: emailHtml,
-      attachments: logoBase64
-        ? [
-            {
-              filename: "logo.png",
-              content: logoBase64,
-              contentId: "logo-image",
-            },
-          ]
-        : undefined,
-    } as any);
+    });
 
     console.log("Email sent successfully:", emailResponse);
 
