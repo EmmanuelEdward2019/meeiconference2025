@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@4.0.0";
+import { encode as base64Encode } from "https://deno.land/std@0.190.0/encoding/base64.ts";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
@@ -42,7 +43,7 @@ const handler = async (req: Request): Promise<Response> => {
                 <!-- Header with Logo -->
                 <tr>
                   <td style="padding: 40px 40px 20px; text-align: center; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 8px 8px 0 0;">
-                    <img src="https://meeiprogram.org/logo.png" alt="MEEI Conference Logo" style="max-width: 180px; height: auto; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
+                    <img src="cid:logo-image" alt="MEEI Conference Logo" style="max-width: 180px; height: auto; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
                     <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 700; line-height: 1.3;">
                       Türkiye–Nigeria<br>Business & Investment Summit 2025
                     </h1>
@@ -135,12 +136,29 @@ const handler = async (req: Request): Promise<Response> => {
       </html>
     `;
 
-    // Send email via Resend
+    // Send email via Resend with inline logo as CID attachment
+    let logoBase64: string | null = null;
+    try {
+      const logoBytes = await Deno.readFile(new URL("./logo.png", import.meta.url));
+      logoBase64 = base64Encode(logoBytes.buffer);
+    } catch (e) {
+      console.error("Failed to load inline logo:", e);
+    }
+
     const emailResponse = await resend.emails.send({
       from: "Türkiye–Nigeria Summit <info@techfieldsdigital.com.ng>",
       to: [email],
       subject: "Welcome to Türkiye–Nigeria Business & Investment Summit 2025",
       html: emailHtml,
+      attachments: logoBase64
+        ? [
+            {
+              filename: "logo.png",
+              content: logoBase64,
+              contentId: "logo-image",
+            },
+          ]
+        : undefined,
     });
 
     console.log("Email sent successfully:", emailResponse);
