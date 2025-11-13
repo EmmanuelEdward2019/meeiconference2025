@@ -102,11 +102,11 @@ const Index = () => {
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 my-8 mt-12 md:mt-8 text-lg">
               <div className="flex items-center gap-2">
                 <Calendar className="text-secondary" size={24} />
-                <span>Main Event: 19th November 2025</span>
+                <span>Main Event: 18th November 2025</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="text-secondary" size={24} />
-                <span>Hilton Hotel, Kozyatağı Istanbul, Türkiye</span>
+                <span>Hilton Istanbul Bosphorus Hotel, Istanbul, Türkiye</span>
               </div>
             </div>
 
@@ -323,12 +323,12 @@ const Index = () => {
               className="rounded-lg shadow-2xl w-full mb-8"
             />
             <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-4">Hilton Hotel Kozyatağı</h3>
+              <h3 className="text-2xl font-bold mb-4">Hilton Istanbul Bosphorus Hotel</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-semibold text-secondary mb-3">Location</h4>
                   <p className="text-muted-foreground">
-                    Kozyatağı, Istanbul, Türkiye<br />
+                    Istanbul, Türkiye<br />
                     Easy access to Istanbul's business district<br />
                     Close to Sabiha Gökçen International Airport
                   </p>

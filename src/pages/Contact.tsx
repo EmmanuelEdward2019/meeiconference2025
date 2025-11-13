@@ -122,7 +122,7 @@ const Contact = () => {
                 <MapPin className="w-8 h-8 text-secondary mb-4" />
                 <h3 className="font-semibold mb-2">Visit Us</h3>
                 <p className="text-muted-foreground">
-                  Hilton Hotel, Kozyatağı<br />
+                  Hilton Istanbul Bosphorus Hotel<br />
                   Istanbul, Türkiye
                 </p>
               </Card>
@@ -249,7 +249,7 @@ const Contact = () => {
           <Card className="p-4 max-w-5xl mx-auto">
             <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
               <p className="text-muted-foreground">
-                [Map of Hilton Hotel Kozyatağı, Istanbul would be embedded here]
+                [Map of Hilton Istanbul Bosphorus Hotel, Istanbul would be embedded here]
               </p>
             </div>
           </Card>

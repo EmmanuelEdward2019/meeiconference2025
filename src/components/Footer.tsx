@@ -29,7 +29,7 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start space-x-2">
                 <MapPin size={16} className="mt-1 text-secondary flex-shrink-0" />
-                <span>Hilton Hotel, Kozyatağı Istanbul, Türkiye</span>
+                <span>Hilton Istanbul Bosphorus Hotel, Istanbul, Türkiye</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Mail size={16} className="text-secondary" />
