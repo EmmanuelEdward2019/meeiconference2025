@@ -146,11 +146,11 @@ const Program = () => {
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-lg">
               <div className="flex items-center gap-2">
                 <Calendar className="text-secondary" size={24} />
-                <span>Main Event: 19th November 2025</span>
+                <span>Main Event: 18th November 2025</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="text-secondary" size={24} />
-                <span>Hilton Hotel, Kozyatağı Istanbul</span>
+                <span>Hilton Istanbul Bosphorus Hotel, Istanbul</span>
               </div>
             </div>
           </div>
@@ -166,7 +166,7 @@ const Program = () => {
             </h2>
             <p className="text-lg text-muted-foreground">
               The summit spans five days from November 16th to 20th, 2025, with the main program 
-              taking place on November 19th at the prestigious Hilton Hotel Kozyatağı in Istanbul.
+              taking place on November 18th at the prestigious Hilton Istanbul Bosphorus Hotel.
             </p>
           </div>
 

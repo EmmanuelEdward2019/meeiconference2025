@@ -9,9 +9,9 @@ import breakfastImg from "@/assets/business-breakfast-5.jpeg";
 
 const Hotels = () => {
   const mainVenue = {
-    name: "Hilton Istanbul Kozyatağı",
+    name: "Hilton Istanbul Bosphorus Hotel",
     rating: 5,
-    address: "Kozyatağı, Istanbul, Türkiye",
+    address: "Istanbul, Türkiye",
     phone: "+90 XXX XXX XXXX",
     email: "reservations@hiltonkozyatagi.com",
     features: [
@@ -47,7 +47,7 @@ const Hotels = () => {
       priceRange: "$$$"
     },
     {
-      name: "Novotel Istanbul Kozyatağı",
+      name: "Novotel Istanbul Bosphorus",
       rating: 4,
       distance: "1.5 km from venue",
       priceRange: "$$"
@@ -97,7 +97,7 @@ const Hotels = () => {
               <div className="grid md:grid-cols-2">
                 <img
                   src={hiltonHotel}
-                  alt="Hilton Istanbul Kozyatağı"
+                  alt="Hilton Istanbul Bosphorus Hotel"
                   className="w-full h-full object-cover"
                 />
                 <div className="p-8">

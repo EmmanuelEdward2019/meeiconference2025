@@ -25,16 +25,6 @@ const handler = async (req: Request): Promise<Response> => {
     const { name, email }: WelcomeEmailRequest = await req.json();
     console.log(`Sending welcome email to: ${email}`);
 
-    // Read and encode logo as base64 (use URL relative to module for reliability on Edge Functions)
-    let logoBase64 = "";
-    try {
-      const logoUrl = new URL("./logo.png", import.meta.url);
-      const logoBytes = await Deno.readFile(logoUrl);
-      logoBase64 = base64Encode(logoBytes);
-    } catch (error) {
-      console.warn("Could not read logo file:", error);
-    }
-
     // Email HTML template with branded design
     const emailHtml = `
       <!DOCTYPE html>
@@ -49,10 +39,10 @@ const handler = async (req: Request): Promise<Response> => {
             <td align="center" style="padding: 40px 20px;">
               <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                 
-                <!-- Logo Header -->
+                <!-- Header -->
                 <tr>
                   <td align="center" style="padding: 40px 40px 30px 40px; background-color: #000000;">
-                    ${logoBase64 ? `<img src="data:image/png;base64,${logoBase64}" alt="MEEI Conference Logo" style="max-width: 200px; height: auto; display: block;" />` : ''}
+                    <h1 style="color: #ffffff; font-size: 24px; margin: 0;">Türkiye–Nigeria Business & Investment Summit</h1>
                   </td>
                 </tr>
 
@@ -71,7 +61,7 @@ const handler = async (req: Request): Promise<Response> => {
                       Thank you for registering for the <strong style="color: #2d5016;">Türkiye–Nigeria Business & Investment Summit 2025</strong>. 
                       We are thrilled to have you join us for this prestigious event taking place from 
                       <strong style="color: #8b4513;">November 16-20, 2025</strong>, with the main event on 
-                      <strong style="color: #8b4513;">November 19, 2025</strong>.
+                      <strong style="color: #8b4513;">18th November 2025</strong>.
                     </p>
 
                     <p style="margin: 0 0 30px 0; font-size: 16px; line-height: 1.6; color: #333333;">
