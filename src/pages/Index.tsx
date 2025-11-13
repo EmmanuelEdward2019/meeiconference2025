@@ -85,7 +85,7 @@ const Index = () => {
         <div className="container mx-auto px-4 z-20 text-center text-white pt-20">
           <div className="animate-fade-in-up">
             <div className="inline-block mb-6 mt-8 md:mt-0 px-6 py-2 bg-secondary/20 backdrop-blur-sm rounded-full border border-secondary/30">
-              <span className="text-secondary font-semibold">Main Program: 19th November 2025</span>
+              <span className="text-secondary font-semibold">Main Program: 18th November 2025</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
