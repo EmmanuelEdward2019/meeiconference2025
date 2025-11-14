@@ -191,7 +191,7 @@ const Speakers = () => {
                   <img
                     src={shaandreFinnies}
                     alt="Shaandre Cavin Finnies"
-                    className="w-40 h-40 rounded-lg object-cover shadow-lg"
+                    className="w-40 h-40 rounded-lg object-contain shadow-lg bg-white"
                   />
                 </div>
                 <div className="flex-1 text-center md:text-left">
