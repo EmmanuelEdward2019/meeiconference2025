@@ -62,13 +62,6 @@ const Speakers = () => {
           country: "Türkiye",
           description: "Leading retail industry expert with extensive market experience",
           image: speakerYavuzAltun
-        },
-        {
-          name: "Dr. Yavuz Selim Silay",
-          title: "Founder AFROTURK TV & İstanbul Consulting Group",
-          country: "Türkiye",
-          description: "Distinguished entrepreneur with extensive experience in international business development and cross-border trade facilitation",
-          image: drYavuzSilay
         }
       ]
     },

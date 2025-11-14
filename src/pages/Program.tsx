@@ -221,7 +221,7 @@ const Program = () => {
             <Button asChild size="lg" variant="secondary">
               <Link to="/register">Register Now</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-dark">
+            <Button asChild size="lg" variant="outline" className="border-white text-green-800 hover:bg-white hover:text-primary-dark">
               <Link to="/contact">Contact Us</Link>
             </Button>
           </div>
