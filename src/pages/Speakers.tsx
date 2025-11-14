@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import meetingImg from "@/assets/meeting-room.jpeg";
 import drYavuzSilay from "@/assets/dr-yavuz-silay.png";
+import shaandreFinnies from "@/assets/speaker-shaandre-finnies.jpg";
 import speakerMartinsArebun from "@/assets/speaker-martins-arebun.png";
 import speakerChiefGreen from "@/assets/speaker-chief-green.jpeg";
 import speakerDanielAyodele from "@/assets/speaker-daniel-ayodele.png";
@@ -61,6 +62,13 @@ const Speakers = () => {
           country: "Türkiye",
           description: "Leading retail industry expert with extensive market experience",
           image: speakerYavuzAltun
+        },
+        {
+          name: "Dr. Yavuz Selim Silay",
+          title: "Founder AFROTURK TV & İstanbul Consulting Group",
+          country: "Türkiye",
+          description: "Distinguished entrepreneur with extensive experience in international business development and cross-border trade facilitation",
+          image: drYavuzSilay
         }
       ]
     },
@@ -188,20 +196,20 @@ const Speakers = () => {
               <div className="flex flex-col md:flex-row gap-6 items-center">
                 <div className="flex-shrink-0">
                   <img
-                    src={drYavuzSilay}
-                    alt="Dr. Yavuz Selim Silay"
+                    src={shaandreFinnies}
+                    alt="Shaandre Cavin Finnies"
                     className="w-40 h-40 rounded-lg object-cover shadow-lg"
                   />
                 </div>
                 <div className="flex-1 text-center md:text-left">
-                  <Badge variant="secondary" className="mb-3">Türkiye</Badge>
-                  <h3 className="text-2xl font-bold mb-2">Dr. Yavuz Selim Silay</h3>
+                  <Badge variant="secondary" className="mb-3">Namibia</Badge>
+                  <h3 className="text-2xl font-bold mb-2">Shaandre Cavin Finnies</h3>
                   <p className="text-lg text-secondary font-semibold mb-3">
-                    Founder AFROTURK TV & İstanbul Consulting Group
+                    Deputy Chief of Staff and Executive Assistant to the Speaker of the National Assembly of Namibia
                   </p>
                   <p className="text-muted-foreground">
-                    Leading expert in international business consulting and strategic partnerships, 
-                    facilitating cross-border cooperation and investment opportunities between Nigeria and Türkiye.
+                    Distinguished parliamentary affairs expert with extensive experience in governance and international cooperation, 
+                    facilitating diplomatic relations and bilateral economic partnerships.
                   </p>
                 </div>
               </div>
