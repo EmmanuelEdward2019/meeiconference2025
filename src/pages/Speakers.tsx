@@ -309,7 +309,7 @@ const Speakers = () => {
                       <img
                         src={speaker.image}
                         alt={speaker.name}
-                        className="w-24 h-24 rounded-lg object-cover shadow-lg flex-shrink-0"
+                        className="w-24 h-24 rounded-lg object-contain shadow-lg flex-shrink-0 bg-white"
                       />
                     ) : (
                       <div className="w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-lg flex-shrink-0" />
