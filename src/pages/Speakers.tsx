@@ -24,6 +24,8 @@ import speakerAtillaOzlu from "@/assets/speaker-atilla-ozlu.jpg";
 import speakerAdekunleBadmus from "@/assets/speaker-adekunle-badmus.jpg";
 import speakerVasimIdrisoglu from "@/assets/speaker-vasim-idrisoglu.jpg";
 import speakerMusaAkgul from "@/assets/speaker-musa-akgul.jpg";
+import speakerMehmetGokdemir from "@/assets/speaker-mehmet-gokdemir.jpg";
+import speakerShettimaBagudu from "@/assets/speaker-shettima-bagudu.jpg";
 
 const Speakers = () => {
   const speakerCategories = [
@@ -106,6 +108,20 @@ const Speakers = () => {
           country: "Türkiye",
           description: "Prominent business leader with extensive experience in industrial development",
           image: speakerAtillaOzlu
+        },
+        {
+          name: "Mehmet Gökdemir",
+          title: "CEO, Textile Engineering Project",
+          country: "Türkiye",
+          description: "Leading textile industry expert driving innovation in manufacturing and engineering",
+          image: speakerMehmetGokdemir
+        },
+        {
+          name: "Hon. Alhaji Shettima Ibrahim Bako Bagudu",
+          title: "Federal Commissioner, Member of the Revenue Mobilization Allocation and Fiscal Commission",
+          country: "Nigeria",
+          description: "Distinguished federal commissioner representing Niger State in fiscal policy and revenue distribution",
+          image: speakerShettimaBagudu
         }
       ]
     },
