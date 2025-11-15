@@ -15,6 +15,15 @@ import speakerYasinAltay from "@/assets/speaker-yasin-altay.jpg";
 import speakerAbdulhakimCoskun from "@/assets/speaker-abdulhakim-coskun.png";
 import speakerZekiGuvercin from "@/assets/speaker-zeki-guvercin.jpg";
 import speakerBulentSen from "@/assets/speaker-bulent-sen.jpg";
+import speakerAmbNgbakoAyuba from "@/assets/speaker-amb-ngbako-ayuba.jpg";
+import speakerNwazeJoseph from "@/assets/speaker-nwaze-joseph.jpg";
+import speakerAdefusiPaul from "@/assets/speaker-adefusi-paul.jpg";
+import speakerGarbaRabiu from "@/assets/speaker-garba-rabiu.jpg";
+import speakerIsmailAktas from "@/assets/speaker-ismail-aktas.jpg";
+import speakerAtillaOzlu from "@/assets/speaker-atilla-ozlu.jpg";
+import speakerAdekunleBadmus from "@/assets/speaker-adekunle-badmus.jpg";
+import speakerVasimIdrisoglu from "@/assets/speaker-vasim-idrisoglu.jpg";
+import speakerMusaAkgul from "@/assets/speaker-musa-akgul.jpg";
 
 const Speakers = () => {
   const speakerCategories = [
@@ -62,6 +71,74 @@ const Speakers = () => {
           country: "Türkiye",
           description: "Leading retail industry expert with extensive market experience",
           image: speakerYavuzAltun
+        },
+        {
+          name: "Amb Ngbako Ayuba Jacob",
+          title: "Member of the Revenue Mobilization Allocation and Fiscal Commission representing Federal Capital Territory (FCT)",
+          country: "Nigeria",
+          description: "Distinguished government representative focused on fiscal policy and revenue allocation",
+          image: speakerAmbNgbakoAyuba
+        },
+        {
+          name: "Nwaze, Joseph Okechukwu",
+          title: "Secretary Federal Commissioner Member of the Revenue Mobilization Allocation and Fiscal Commission",
+          country: "Nigeria",
+          description: "Senior government official with expertise in fiscal management and revenue distribution",
+          image: speakerNwazeJoseph
+        },
+        {
+          name: "Adefusi Paul Taiwo",
+          title: "Director, Revenue Mobilization Allocation & Fiscal Commission (RMFAC), Nigeria",
+          country: "Nigeria",
+          description: "Strategic leader in fiscal policy development and revenue management",
+          image: speakerAdefusiPaul
+        },
+        {
+          name: "Ismail Aktaş",
+          title: "TÜRSIP General President",
+          country: "Türkiye",
+          description: "Leading voice in Turkish industrial development and export promotion",
+          image: speakerIsmailAktas
+        },
+        {
+          name: "Atilla Özlü",
+          title: "CEO & President, Ayaz Group Limited",
+          country: "Türkiye",
+          description: "Prominent business leader with extensive experience in industrial development",
+          image: speakerAtillaOzlu
+        }
+      ]
+    },
+    {
+      category: "Panel Session - Accelerating Bilateral Industrial Growth",
+      speakers: [
+        {
+          name: "Amb. Dr. Adekunle Azeez Badmus",
+          title: "United Nations Ambassador, President, The Global Clusters",
+          country: "Nigeria",
+          description: "International diplomat and development expert fostering global partnerships",
+          image: speakerAdekunleBadmus
+        },
+        {
+          name: "Vasim İdrisoğlu",
+          title: "President, United Education Group",
+          country: "Türkiye",
+          description: "Education leader promoting international academic cooperation and capacity building",
+          image: speakerVasimIdrisoglu
+        },
+        {
+          name: "Musa Akgül",
+          title: "Senior Collaboration Expert, EU / Turkish Ministry of Justice",
+          country: "Türkiye",
+          description: "Expert in European Union collaboration and international legal frameworks",
+          image: speakerMusaAkgul
+        },
+        {
+          name: "Mr. Garba Rabiu",
+          title: "Member Representing Zamfara State Nigeria",
+          country: "Nigeria",
+          description: "Government representative with focus on regional development and inter-state collaboration",
+          image: speakerGarbaRabiu
         }
       ]
     },
